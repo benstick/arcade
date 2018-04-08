@@ -78,10 +78,10 @@
     <Compile Include="Darren\SnakeGame.Designer.cs">
       <DependentUpon>SnakeGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="Seth\Duckhunt.cs">
+    <Compile Include="Ben\Duckhunt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Seth\Duckhunt.Designer.cs">
+    <Compile Include="Ben\Duckhunt.Designer.cs">
       <DependentUpon>Duckhunt.cs</DependentUpon>
     </Compile>
     <Compile Include="Cam\FlappyCopter.cs">
@@ -104,7 +104,7 @@
     <EmbeddedResource Include="Darren\SnakeGame.resx">
       <DependentUpon>SnakeGame.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Seth\Duckhunt.resx">
+    <EmbeddedResource Include="Ben\Duckhunt.resx">
       <DependentUpon>Duckhunt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mainmenu.resx">
