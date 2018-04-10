@@ -19,7 +19,7 @@ namespace Arcade
 
         private void mainmenu_Load(object sender, EventArgs e)
         {
-            this.Opacity = 0.1;
+            this.Opacity = 1.0;
             FadeinTimer.Start();
             DuckhuntDemo.Enabled = false;
         }
@@ -90,8 +90,8 @@ namespace Arcade
 
         private void FlappyCopterDemo_Click(object sender, EventArgs e)
         {
-            FlappyCopter flappyCopter = new FlappyCopter();
-            flappyCopter.Show();
+            Copter copter = new Copter();
+            copter.Show();
         }
 
         private void CarDoggingDemo_Click(object sender, EventArgs e)
@@ -105,6 +105,21 @@ namespace Arcade
         {
             Darren.SnakeGame snakeGame = new Darren.SnakeGame();
             snakeGame.Show();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Made with Photo Shop");
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
