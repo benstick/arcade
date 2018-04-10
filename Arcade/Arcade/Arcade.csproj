@@ -78,10 +78,10 @@
     <Compile Include="Darren\SnakeGame.Designer.cs">
       <DependentUpon>SnakeGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="Seth\Duckhunt.cs">
+    <Compile Include="Ben\Duckhunt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Seth\Duckhunt.Designer.cs">
+    <Compile Include="Ben\Duckhunt.Designer.cs">
       <DependentUpon>Duckhunt.cs</DependentUpon>
     </Compile>
     <Compile Include="Cam\FlappyCopter.cs">
@@ -98,16 +98,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Cam\FlappyCopter.resx">
-      <DependentUpon>FlappyCopter.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Darren\CarDogging.resx">
       <DependentUpon>CarDogging.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Darren\SnakeGame.resx">
       <DependentUpon>SnakeGame.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Seth\Duckhunt.resx">
+    <EmbeddedResource Include="Ben\Duckhunt.resx">
       <DependentUpon>Duckhunt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mainmenu.resx">
