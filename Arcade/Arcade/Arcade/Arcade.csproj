@@ -98,6 +98,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Cam\FlappyCopter.resx">
+      <DependentUpon>FlappyCopter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Darren\CarDogging.resx">
       <DependentUpon>CarDogging.cs</DependentUpon>
     </EmbeddedResource>
