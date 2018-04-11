@@ -94,18 +94,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -148,52 +148,7 @@
     <None Include="Resources\duck.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\EightBitSpace.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ambulance.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\bronze.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\carGreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\carGrey.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\carOrange.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\carPink.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CarRed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\carYellow.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\explosion.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\gold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\roadTrack.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\silver.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\silver1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TruckBlue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TruckWhite.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

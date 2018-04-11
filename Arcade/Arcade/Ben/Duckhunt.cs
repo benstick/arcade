@@ -39,7 +39,7 @@ namespace Arcade
                 MessageBox.Show(ex.ToString());
             }
 
-            playAudio(Properties.Resources.EightBitSpace, true);
+            //playAudio(Properties.Resources.EightBitSpace, true);
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             welcomeTextTimer.Enabled = true;
