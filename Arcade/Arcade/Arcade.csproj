@@ -63,21 +63,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Darren\CarDogging.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Darren\CarDogging.Designer.cs">
-      <DependentUpon>CarDogging.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Darren\Circle.cs" />
-    <Compile Include="Darren\Input.cs" />
-    <Compile Include="Darren\Settings.cs" />
-    <Compile Include="Darren\SnakeGame.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Darren\SnakeGame.Designer.cs">
-      <DependentUpon>SnakeGame.cs</DependentUpon>
-    </Compile>
     <Compile Include="Ben\Duckhunt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,12 +85,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Cam\FlappyCopter.resx">
       <DependentUpon>FlappyCopter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Darren\CarDogging.resx">
-      <DependentUpon>CarDogging.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Darren\SnakeGame.resx">
-      <DependentUpon>SnakeGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ben\Duckhunt.resx">
       <DependentUpon>Duckhunt.cs</DependentUpon>

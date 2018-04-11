@@ -1,6 +1,6 @@
 ﻿namespace Arcade
 {
-    partial class Copter
+    partial class FlappyCopter
     {
         /// <summary>
         /// Required designer variable.
@@ -29,146 +29,191 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Copter));
-            this.flappyCopter = new System.Windows.Forms.PictureBox();
-            this.obstacleTop = new System.Windows.Forms.PictureBox();
-            this.obstacleBottom = new System.Windows.Forms.PictureBox();
-            this.ground = new System.Windows.Forms.PictureBox();
-            this.gameTimer = new System.Windows.Forms.Timer(this.components);
-            this.scoreText = new System.Windows.Forms.Label();
-            this.endText1 = new System.Windows.Forms.Label();
-            this.endText2 = new System.Windows.Forms.Label();
-            this.restartButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.flappyCopter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.obstacleTop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.obstacleBottom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ground)).BeginInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FlappyCopter));
+            this.ObstacleTop = new System.Windows.Forms.PictureBox();
+            this.Copter = new System.Windows.Forms.PictureBox();
+            this.ObstacleBottom = new System.Windows.Forms.PictureBox();
+            this.Ground = new System.Windows.Forms.PictureBox();
+            this.SkyBounds = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ScoreText = new System.Windows.Forms.Label();
+            this.FinalScore = new System.Windows.Forms.Label();
+            this.Welcome = new System.Windows.Forms.Label();
+            this.MiddleObstacle1 = new System.Windows.Forms.PictureBox();
+            this.MiddleObstacle2 = new System.Windows.Forms.PictureBox();
+            this.SpeedLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.ObstacleTop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Copter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObstacleBottom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Ground)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SkyBounds)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MiddleObstacle1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MiddleObstacle2)).BeginInit();
             this.SuspendLayout();
             // 
-            // flappyCopter
+            // ObstacleTop
             // 
-            this.flappyCopter.Image = ((System.Drawing.Image)(resources.GetObject("flappyCopter.Image")));
-            this.flappyCopter.Location = new System.Drawing.Point(26, 172);
-            this.flappyCopter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.flappyCopter.Name = "flappyCopter";
-            this.flappyCopter.Size = new System.Drawing.Size(75, 41);
-            this.flappyCopter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.flappyCopter.TabIndex = 0;
-            this.flappyCopter.TabStop = false;
-            this.flappyCopter.Click += new System.EventHandler(this.flappyCopter_Click);
-            // 
-            // obstacleTop
-            // 
-            this.obstacleTop.Image = ((System.Drawing.Image)(resources.GetObject("obstacleTop.Image")));
-            this.obstacleTop.Location = new System.Drawing.Point(117, 1);
-            this.obstacleTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.obstacleTop.Name = "obstacleTop";
-            this.obstacleTop.Size = new System.Drawing.Size(124, 80);
-            this.obstacleTop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.obstacleTop.TabIndex = 1;
-            this.obstacleTop.TabStop = false;
-            this.obstacleTop.Click += new System.EventHandler(this.obstacleTop_Click);
-            // 
-            // obstacleBottom
-            // 
-            this.obstacleBottom.Image = ((System.Drawing.Image)(resources.GetObject("obstacleBottom.Image")));
-            this.obstacleBottom.Location = new System.Drawing.Point(259, 270);
-            this.obstacleBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.obstacleBottom.Name = "obstacleBottom";
-            this.obstacleBottom.Size = new System.Drawing.Size(75, 150);
-            this.obstacleBottom.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.obstacleBottom.TabIndex = 2;
-            this.obstacleBottom.TabStop = false;
-            this.obstacleBottom.Click += new System.EventHandler(this.obstacleBottom_Click);
-            // 
-            // ground
-            // 
-            this.ground.Image = ((System.Drawing.Image)(resources.GetObject("ground.Image")));
-            this.ground.Location = new System.Drawing.Point(0, 417);
-            this.ground.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.ground.Name = "ground";
-            this.ground.Size = new System.Drawing.Size(373, 64);
-            this.ground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ground.TabIndex = 3;
-            this.ground.TabStop = false;
-            this.ground.Click += new System.EventHandler(this.ground_Click);
-            // 
-            // gameTimer
-            // 
-            this.gameTimer.Enabled = true;
-            this.gameTimer.Interval = 15;
-            this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
-            // 
-            // scoreText
-            // 
-            this.scoreText.AutoSize = true;
-            this.scoreText.Location = new System.Drawing.Point(11, 9);
-            this.scoreText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.scoreText.Name = "scoreText";
-            this.scoreText.Size = new System.Drawing.Size(35, 13);
-            this.scoreText.TabIndex = 4;
-            this.scoreText.Text = "label1";
-            this.scoreText.Click += new System.EventHandler(this.scoreText_Click);
-            // 
-            // endText1
-            // 
-            this.endText1.AutoSize = true;
-            this.endText1.Location = new System.Drawing.Point(58, 278);
-            this.endText1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.endText1.Name = "endText1";
-            this.endText1.Size = new System.Drawing.Size(35, 13);
-            this.endText1.TabIndex = 5;
-            this.endText1.Text = "label2";
-            this.endText1.Visible = false;
-            this.endText1.Click += new System.EventHandler(this.endText1_Click);
-            // 
-            // endText2
-            // 
-            this.endText2.AutoSize = true;
-            this.endText2.Location = new System.Drawing.Point(58, 313);
-            this.endText2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.endText2.Name = "endText2";
-            this.endText2.Size = new System.Drawing.Size(35, 13);
-            this.endText2.TabIndex = 6;
-            this.endText2.Text = "label3";
-            this.endText2.Visible = false;
-            this.endText2.Click += new System.EventHandler(this.endText2_Click);
-            // 
-            // restartButton
-            // 
-            this.restartButton.Location = new System.Drawing.Point(183, 190);
-            this.restartButton.Name = "restartButton";
-            this.restartButton.Size = new System.Drawing.Size(75, 23);
-            this.restartButton.TabIndex = 7;
-            this.restartButton.Text = "Restart";
-            this.restartButton.UseVisualStyleBackColor = true;
-            this.restartButton.Click += new System.EventHandler(this.restartButton_Click);
+            this.ObstacleTop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ObstacleTop.BackgroundImage")));
+            this.ObstacleTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ObstacleTop.Location = new System.Drawing.Point(745, 15);
+            this.ObstacleTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ObstacleTop.Name = "ObstacleTop";
+            this.ObstacleTop.Size = new System.Drawing.Size(133, 62);
+            this.ObstacleTop.TabIndex = 0;
+            this.ObstacleTop.TabStop = false;
+            this.ObstacleTop.Click += new System.EventHandler(this.ObstacleTop_Click);
             // 
             // Copter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.Copter.BackColor = System.Drawing.SystemColors.Window;
+            this.Copter.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Copter.BackgroundImage")));
+            this.Copter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Copter.Location = new System.Drawing.Point(16, 201);
+            this.Copter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Copter.Name = "Copter";
+            this.Copter.Size = new System.Drawing.Size(148, 80);
+            this.Copter.TabIndex = 1;
+            this.Copter.TabStop = false;
+            this.Copter.Click += new System.EventHandler(this.Copter_Click);
+            // 
+            // ObstacleBottom
+            // 
+            this.ObstacleBottom.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ObstacleBottom.BackgroundImage")));
+            this.ObstacleBottom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ObstacleBottom.Location = new System.Drawing.Point(413, 478);
+            this.ObstacleBottom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ObstacleBottom.Name = "ObstacleBottom";
+            this.ObstacleBottom.Size = new System.Drawing.Size(133, 62);
+            this.ObstacleBottom.TabIndex = 2;
+            this.ObstacleBottom.TabStop = false;
+            this.ObstacleBottom.Click += new System.EventHandler(this.ObstacleBottom_Click);
+            // 
+            // Ground
+            // 
+            this.Ground.BackColor = System.Drawing.Color.Red;
+            this.Ground.Location = new System.Drawing.Point(0, 545);
+            this.Ground.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Ground.Name = "Ground";
+            this.Ground.Size = new System.Drawing.Size(1065, 12);
+            this.Ground.TabIndex = 3;
+            this.Ground.TabStop = false;
+            this.Ground.Click += new System.EventHandler(this.Ground_Click);
+            // 
+            // SkyBounds
+            // 
+            this.SkyBounds.BackColor = System.Drawing.Color.Red;
+            this.SkyBounds.Location = new System.Drawing.Point(0, -10);
+            this.SkyBounds.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SkyBounds.Name = "SkyBounds";
+            this.SkyBounds.Size = new System.Drawing.Size(1065, 17);
+            this.SkyBounds.TabIndex = 4;
+            this.SkyBounds.TabStop = false;
+            this.SkyBounds.Click += new System.EventHandler(this.SkyBounds_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 15;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // ScoreText
+            // 
+            this.ScoreText.AutoSize = true;
+            this.ScoreText.Location = new System.Drawing.Point(16, 15);
+            this.ScoreText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ScoreText.Name = "ScoreText";
+            this.ScoreText.Size = new System.Drawing.Size(46, 17);
+            this.ScoreText.TabIndex = 5;
+            this.ScoreText.Text = "label1";
+            this.ScoreText.Click += new System.EventHandler(this.ScoreText_Click);
+            // 
+            // FinalScore
+            // 
+            this.FinalScore.AutoSize = true;
+            this.FinalScore.Location = new System.Drawing.Point(623, 300);
+            this.FinalScore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.FinalScore.Name = "FinalScore";
+            this.FinalScore.Size = new System.Drawing.Size(79, 17);
+            this.FinalScore.TabIndex = 6;
+            this.FinalScore.Text = "Final Score";
+            this.FinalScore.Visible = false;
+            this.FinalScore.Click += new System.EventHandler(this.FinalScore_Click);
+            // 
+            // Welcome
+            // 
+            this.Welcome.AutoSize = true;
+            this.Welcome.Location = new System.Drawing.Point(394, 240);
+            this.Welcome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Welcome.Name = "Welcome";
+            this.Welcome.Size = new System.Drawing.Size(253, 17);
+            this.Welcome.TabIndex = 7;
+            this.Welcome.Text = "Press The Enter Key To Begin Playing!";
+            // 
+            // MiddleObstacle1
+            // 
+            this.MiddleObstacle1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MiddleObstacle1.BackgroundImage")));
+            this.MiddleObstacle1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MiddleObstacle1.Location = new System.Drawing.Point(845, 338);
+            this.MiddleObstacle1.Name = "MiddleObstacle1";
+            this.MiddleObstacle1.Size = new System.Drawing.Size(100, 50);
+            this.MiddleObstacle1.TabIndex = 8;
+            this.MiddleObstacle1.TabStop = false;
+            this.MiddleObstacle1.Click += new System.EventHandler(this.MiddleObstacle1_Click);
+            // 
+            // MiddleObstacle2
+            // 
+            this.MiddleObstacle2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MiddleObstacle2.BackgroundImage")));
+            this.MiddleObstacle2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MiddleObstacle2.Location = new System.Drawing.Point(397, 136);
+            this.MiddleObstacle2.Name = "MiddleObstacle2";
+            this.MiddleObstacle2.Size = new System.Drawing.Size(100, 50);
+            this.MiddleObstacle2.TabIndex = 9;
+            this.MiddleObstacle2.TabStop = false;
+            this.MiddleObstacle2.Click += new System.EventHandler(this.MiddleObstacle2_Click);
+            // 
+            // SpeedLabel
+            // 
+            this.SpeedLabel.AutoSize = true;
+            this.SpeedLabel.Location = new System.Drawing.Point(952, 15);
+            this.SpeedLabel.Name = "SpeedLabel";
+            this.SpeedLabel.Size = new System.Drawing.Size(57, 17);
+            this.SpeedLabel.TabIndex = 10;
+            this.SpeedLabel.Text = "Speed: ";
+            this.SpeedLabel.TextChanged += new System.EventHandler(this.SpeedLabel_TextChanged);
+            // 
+            // FlappyCopter
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Aqua;
-            this.ClientSize = new System.Drawing.Size(371, 482);
-            this.Controls.Add(this.restartButton);
-            this.Controls.Add(this.endText2);
-            this.Controls.Add(this.endText1);
-            this.Controls.Add(this.scoreText);
-            this.Controls.Add(this.ground);
-            this.Controls.Add(this.obstacleBottom);
-            this.Controls.Add(this.obstacleTop);
-            this.Controls.Add(this.flappyCopter);
-            this.ForeColor = System.Drawing.Color.Black;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "Copter";
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.SpeedLabel);
+            this.Controls.Add(this.MiddleObstacle2);
+            this.Controls.Add(this.MiddleObstacle1);
+            this.Controls.Add(this.Welcome);
+            this.Controls.Add(this.FinalScore);
+            this.Controls.Add(this.ScoreText);
+            this.Controls.Add(this.SkyBounds);
+            this.Controls.Add(this.Ground);
+            this.Controls.Add(this.ObstacleBottom);
+            this.Controls.Add(this.Copter);
+            this.Controls.Add(this.ObstacleTop);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "FlappyCopter";
             this.Text = "FlappyCopter";
             this.Load += new System.EventHandler(this.FlappyCopter_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.inGameKeyDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.keyUp);
-            ((System.ComponentModel.ISupportInitialize)(this.flappyCopter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.obstacleTop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.obstacleBottom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ground)).EndInit();
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Down);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterKeyPressed);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Up);
+            ((System.ComponentModel.ISupportInitialize)(this.ObstacleTop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Copter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObstacleBottom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Ground)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SkyBounds)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MiddleObstacle1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MiddleObstacle2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,15 +221,17 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox flappyCopter;
-        private System.Windows.Forms.PictureBox obstacleTop;
-        private System.Windows.Forms.PictureBox obstacleBottom;
-        private System.Windows.Forms.PictureBox ground;
-        private System.Windows.Forms.Timer gameTimer;
-        private System.Windows.Forms.Label scoreText;
-        private System.Windows.Forms.Label endText1;
-        private System.Windows.Forms.Label endText2;
-        private System.Windows.Forms.Button restartButton;
+        private System.Windows.Forms.PictureBox ObstacleTop;
+        private System.Windows.Forms.PictureBox Copter;
+        private System.Windows.Forms.PictureBox ObstacleBottom;
+        private System.Windows.Forms.PictureBox Ground;
+        private System.Windows.Forms.PictureBox SkyBounds;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label ScoreText;
+        private System.Windows.Forms.Label FinalScore;
+        private System.Windows.Forms.Label Welcome;
+        private System.Windows.Forms.PictureBox MiddleObstacle1;
+        private System.Windows.Forms.PictureBox MiddleObstacle2;
+        private System.Windows.Forms.Label SpeedLabel;
     }
 }
-

@@ -55,11 +55,6 @@ namespace Arcade
                 FlappyCopterDemo.Enabled = true;
                 FlappyCopterDemo.Visible = true;
 
-                CarDoggingDemo.Enabled = true;
-                CarDoggingDemo.Visible = true;
-
-                SankeDemo.Enabled = true;
-                SankeDemo.Visible = true;
                 //disable labels of guide
                 label1.Visible = false;
                 ExitLabel.Visible = false;
@@ -90,21 +85,8 @@ namespace Arcade
 
         private void FlappyCopterDemo_Click(object sender, EventArgs e)
         {
-            Copter copter = new Copter();
+            FlappyCopter copter = new FlappyCopter();
             copter.Show();
-        }
-
-        private void CarDoggingDemo_Click(object sender, EventArgs e)
-        {
-            Darren.CarDogging carDogging = new Darren.CarDogging();
-            carDogging.Show();
-
-        }
-
-        private void SankeDemo_Click(object sender, EventArgs e)
-        {
-            Darren.SnakeGame snakeGame = new Darren.SnakeGame();
-            snakeGame.Show();
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)

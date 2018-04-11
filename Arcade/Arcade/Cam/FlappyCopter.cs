@@ -1,105 +1,126 @@
 ﻿using System;
-using System.Windows.Forms;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Arcade
 {
-    public partial class Copter : Form
+    public partial class FlappyCopter : Form
     {
+        int speed = 15;
+        int gravity = 5;
+        int Score = 0;
+
         bool jumping = false;
 
-        int speed = 5;
-        int gravity = 5;
-        int Inscore = 0;
-
-        
-        public Copter()
+        public FlappyCopter()
         {
             InitializeComponent();
-
-            endText1.Text = "Game Over!";
-            endText2.Text = "Your score is:" + Inscore;
-
-            endText1.Visible = false;
-            endText2.Visible = false;
-            restartButton.Visible = false;
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.UserPaint, true);
         }
 
-        private void FlappyCopter_Load(object sender, EventArgs e)
+
+        private void timer1_Tick(object sender, EventArgs e)
         {
+            ObstacleTop.Left -= speed;
+            ObstacleBottom.Left -= speed;
+            MiddleObstacle1.Left -= speed;
+            MiddleObstacle2.Left -= speed;
+            Copter.Top += gravity;
+            SpeedLabel.Text = "Speed: " + speed;
+            ScoreText.Text = Score.ToString();
+            Random rand = new Random();
 
-        }
 
-        private void obstacleTop_Click(object sender, EventArgs e)
-        {
+            if (
+                Copter.Bounds.IntersectsWith(Ground.Bounds) || 
+                Copter.Bounds.IntersectsWith(SkyBounds.Bounds) ||
+                Copter.Bounds.IntersectsWith(ObstacleBottom.Bounds)||
+                Copter.Bounds.IntersectsWith(ObstacleTop.Bounds)||
+                Copter.Bounds.IntersectsWith(MiddleObstacle1.Bounds)||
+                Copter.Bounds.IntersectsWith(MiddleObstacle2.Bounds)
 
-        }
-
-        private void flappyCopter_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void obstacleBottom_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ground_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void scoreText_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void endText1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void endText2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gameTimer_Tick(object sender, EventArgs e)
-        {
-            obstacleTop.Left -= speed;
-            obstacleBottom.Left -= speed;
-            flappyCopter.Top += gravity;
-            scoreText.Text = "" + Inscore;
-            if (flappyCopter.Bounds.IntersectsWith(ground.Bounds))
+                )
             {
                 endGame();
-                endText2.Text = "Your score is:" + Inscore;
+                FinalScore.Text = "Your final score is:" + Score;
             }
-            else if (flappyCopter.Bounds.IntersectsWith(obstacleBottom.Bounds))
+
+            if (ObstacleBottom.Left < -150)
             {
-                endGame();
-                endText2.Text = "Your score is:" + Inscore;
-            }
-            else if (flappyCopter.Bounds.IntersectsWith(obstacleTop.Bounds))
-            {
-                endGame();
-            }
-                if (obstacleBottom.Left < -80)
-                {
-                    obstacleBottom.Left = 1000; Inscore += 1;
+                ObstacleBottom.Left = rand.Next(900, 2500);  Score++;
+                ObstacleBottom.Top = rand.Next(0, 600);
                 speed++;
-               
-                }
-                else if (obstacleTop.Left < -95)
-                {
-                    obstacleTop.Left = 1100; Inscore += 1;
-                
-                }
-            
+            }
+            else if (ObstacleTop.Left < -150)
+            {
+                ObstacleTop.Left = rand.Next(900, 2500);  Score++;
+                ObstacleTop.Top = rand.Next(0, 600);
+            }
+            else if (MiddleObstacle1.Left < -150)
+            {
+                MiddleObstacle1.Left = rand.Next(900, 2500);  Score++;
+                MiddleObstacle1.Top = rand.Next(0, 600);
+            }
+            else if (MiddleObstacle2.Left < -150)
+            {
+                MiddleObstacle2.Left = rand.Next(900, 2500);  Score++;
+                MiddleObstacle2.Top = rand.Next(0, 600);
+            }
+
+        }
+        private void endGame()
+        {
+            timer1.Stop();
+            DialogResult dr = MessageBox.Show("Your final score is:" + Score, "Play again?", MessageBoxButtons.YesNo);
+            if(dr==DialogResult.Yes)
+            {
+                //reset game
+                reset();
+            }
+            else
+            {
+                //exit game
+                this.Close();
+            }
+
+
+
+        }
+         void reset()
+        {
+            speed = 15;
+            gravity = 5;
+            Score = 0;
+            Random rand = new Random();
+            ObstacleBottom.Left = rand.Next(900, 2500);
+            ObstacleBottom.Top = rand.Next(0, 600);
+            ObstacleTop.Left = rand.Next(900, 2500);
+            ObstacleTop.Top = rand.Next(0, 600);
+            MiddleObstacle1.Left = rand.Next(900, 2500);
+            MiddleObstacle1.Top = rand.Next(0, 600);
+            MiddleObstacle2.Left = rand.Next(900, 2500);
+            MiddleObstacle2.Top = rand.Next(0, 600);
+            Copter.Location = new Point(16, 201);
+            SpeedLabel.Text = "Speed: " + speed;
+            Welcome.Visible = true;
+            ScoreText.Text = "0";
         }
 
-        private void inGameKeyDown(object sender, KeyEventArgs e)
+        private void FinalScore_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
+        private void Down(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space)
             {
@@ -108,36 +129,70 @@ namespace Arcade
             }
         }
 
-        private void keyUp(object sender, KeyEventArgs e)
+        private void Up(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space)
             {
                 jumping = false;
-                gravity = 5;
+                gravity = 3;
             }
         }
 
-        private void endGame()
+        private void EnterKeyPressed(object sender, KeyPressEventArgs e)
         {
-            gameTimer.Stop();
-            endText1.Visible = true;
-            endText2.Visible = true;
-            restartButton.Visible = true;
+            if (e.KeyChar == Convert.ToChar(Keys.Enter)&& speed==15)
+            {
+                timer1.Start();
+                Welcome.Visible = false;
+            }
+            
         }
 
-        private void restartButton_Click(object sender, EventArgs e)
+        private void MiddleObstacle1_Click(object sender, EventArgs e)
         {
-            gameTimer.Start();
-            endText1.Visible = false;
-            endText2.Visible = false;
-            restartButton.Visible = false;
-            flappyCopter.Location = new Point(35, 150);
 
         }
 
-       
+        private void MiddleObstacle2_Click(object sender, EventArgs e)
+        {
 
-        private void Copter_Load(object sender, EventArgs e)
+        }
+
+        private void SpeedLabel_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void FlappyCopter_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ObstacleTop_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Copter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ObstacleBottom_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void SkyBounds_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Ground_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ScoreText_Click(object sender, EventArgs e)
         {
 
         }

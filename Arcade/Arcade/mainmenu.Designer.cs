@@ -107,32 +107,6 @@
             this.FlappyCopterDemo.Visible = false;
             this.FlappyCopterDemo.Click += new System.EventHandler(this.FlappyCopterDemo_Click);
             // 
-            // SankeDemo
-            // 
-            this.SankeDemo.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.SankeDemo.Enabled = false;
-            this.SankeDemo.Location = new System.Drawing.Point(153, 352);
-            this.SankeDemo.Margin = new System.Windows.Forms.Padding(4);
-            this.SankeDemo.Name = "SankeDemo";
-            this.SankeDemo.Size = new System.Drawing.Size(181, 119);
-            this.SankeDemo.TabIndex = 6;
-            this.SankeDemo.TabStop = false;
-            this.SankeDemo.Visible = false;
-            this.SankeDemo.Click += new System.EventHandler(this.SankeDemo_Click);
-            // 
-            // CarDoggingDemo
-            // 
-            this.CarDoggingDemo.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.CarDoggingDemo.Enabled = false;
-            this.CarDoggingDemo.Location = new System.Drawing.Point(655, 352);
-            this.CarDoggingDemo.Margin = new System.Windows.Forms.Padding(4);
-            this.CarDoggingDemo.Name = "CarDoggingDemo";
-            this.CarDoggingDemo.Size = new System.Drawing.Size(181, 119);
-            this.CarDoggingDemo.TabIndex = 7;
-            this.CarDoggingDemo.TabStop = false;
-            this.CarDoggingDemo.Visible = false;
-            this.CarDoggingDemo.Click += new System.EventHandler(this.CarDoggingDemo_Click);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
