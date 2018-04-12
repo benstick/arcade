@@ -32,14 +32,16 @@ namespace Arcade
             //Set cursor image
             try
             {
-                this.Cursor = new Cursor(Application.StartupPath + "\\DuckHuntReticle.cur");
+                string Debugfile = Application.StartupPath;
+                string CursorPath = Debugfile.Remove(Debugfile.Length - 10, 10);
+                this.Cursor = new Cursor(CursorPath + "\\Resources\\DuckHuntReticle.cur");
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
 
-            //playAudio(Properties.Resources.EightBitSpace, true);
+            playAudio(Properties.Resources.EightBitSpace, true);
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             welcomeTextTimer.Enabled = true;
@@ -59,10 +61,15 @@ namespace Arcade
             sndPlayer = new SoundPlayer(stream);
 
             if (playOnLoop)
+            {
+                sndPlayer.Dispose();
                 sndPlayer.PlayLooping();
+            }
             else
+            {
+                sndPlayer.Dispose();
                 sndPlayer.Play();
-
+            }
         }
 
         private void countDownTimer_Tick(object sender, EventArgs e)

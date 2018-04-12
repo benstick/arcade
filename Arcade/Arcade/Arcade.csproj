@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{49CBBAE0-91C6-4E96-98C9-55B85D53D5DD}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>Arcade</RootNamespace>
     <AssemblyName>Arcade</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -162,6 +162,14 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\reticle.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DuckhuntBackgroundMusic.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EightBitSpace.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
