@@ -69,7 +69,7 @@
             // 
             this.playButton.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.playButton.Image = global::Arcade.Properties.Resources.presstoplay;
-            this.playButton.Location = new System.Drawing.Point(314, 304);
+            this.playButton.Location = new System.Drawing.Point(314, -304);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(563, 186);
             this.playButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -82,7 +82,7 @@
             // 
             this.welcomeLogo.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.welcomeLogo.Image = global::Arcade.Properties.Resources.spacehuntlogo;
-            this.welcomeLogo.Location = new System.Drawing.Point(314, 74);
+            this.welcomeLogo.Location = new System.Drawing.Point(314, -740);
             this.welcomeLogo.Name = "welcomeLogo";
             this.welcomeLogo.Size = new System.Drawing.Size(640, 416);
             this.welcomeLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
