@@ -32,7 +32,6 @@
             this.countDownTimer = new System.Windows.Forms.Timer(this.components);
             this.welcomeTextTimer = new System.Windows.Forms.Timer(this.components);
             this.movingObjects = new System.Windows.Forms.Timer(this.components);
-            this.welcomeTitleLabel = new System.Windows.Forms.Label();
             this.playButton = new System.Windows.Forms.PictureBox();
             this.welcomeLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.playButton)).BeginInit();
@@ -53,17 +52,6 @@
             // 
             this.movingObjects.Interval = 1;
             this.movingObjects.Tick += new System.EventHandler(this.movingObjects_Tick);
-            // 
-            // welcomeTitleLabel
-            // 
-            this.welcomeTitleLabel.AutoSize = true;
-            this.welcomeTitleLabel.Location = new System.Drawing.Point(12, 9);
-            this.welcomeTitleLabel.Name = "welcomeTitleLabel";
-            this.welcomeTitleLabel.Size = new System.Drawing.Size(35, 13);
-            this.welcomeTitleLabel.TabIndex = 0;
-            this.welcomeTitleLabel.Text = "label1";
-            this.welcomeTitleLabel.Visible = false;
-            this.welcomeTitleLabel.Click += new System.EventHandler(this.welcomeTitleLabel_Click);
             // 
             // playButton
             // 
@@ -94,14 +82,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = global::Arcade.Properties.Resources.grid;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1280, 700);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.welcomeLogo);
-            this.Controls.Add(this.welcomeTitleLabel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Duckhunt";
@@ -120,7 +106,6 @@
         private System.Windows.Forms.Timer countDownTimer;
         private System.Windows.Forms.Timer welcomeTextTimer;
         private System.Windows.Forms.Timer movingObjects;
-        private System.Windows.Forms.Label welcomeTitleLabel;
         private System.Windows.Forms.PictureBox welcomeLogo;
         private System.Windows.Forms.PictureBox playButton;
     }

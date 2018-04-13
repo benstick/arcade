@@ -25,6 +25,7 @@ namespace Arcade
         private bool moveWelcomeLogoDown = true;
         private bool gameWon = false;
         private int currentRound = 1;
+        private int speed = 1;
 
         //Runs when game is loaded up
         private void Duckhunt_Load(object sender, EventArgs e)
@@ -127,7 +128,7 @@ namespace Arcade
             ufo.Image = Properties.Resources.spaceship;
             ufo.Size = new Size(45, 65);
             //set origin point for object
-            ufo.Location = new Point(rnd.Next(0, this.Width - ufo.Size.Width), this.Height - 200);
+            ufo.Location = new Point(rnd.Next(-2000, -ufo.Size.Width), rnd.Next(0, this.Height - ufo.Size.Height));
             ufo.SizeMode = PictureBoxSizeMode.StretchImage;
             this.Controls.Add(ufo);
             ufoList.Add(ufo);
@@ -137,35 +138,31 @@ namespace Arcade
         private void runRound()
         {
             createEnemy();
+
+            if (!gameWon)
+                runRound();
         }
 
         private void mainGame()
         {
             do
             {
-                //start round
-                for (int i = 0; i <= 10; i++)
-                    runRound();
+                runRound();
 
                 movingObjects.Enabled = true;
             } while (gameWon);
         }
 
+        //move objects across the screen
         private void movingObjects_Tick(object sender, EventArgs e)
         {
             int count = 0;
 
             for (int i = 0; i < ufoList.Count; i++)
             {
-                //check which side of the screen the enemy is on
-                if (ufoList[i].Location.X < this.Width / 2)
-                    ufoList[i].Location = new Point(ufoList[i].Location.X + 3, ufoList[i].Location.Y - 3);
-                else
-                    ufoList[i].Location = new Point(ufoList[i].Location.X - 3, ufoList[i].Location.Y - 3);
-
+                ufoList[i].Location = new Point(ufoList[i].Location.X + 3 * speed, ufoList[i].Location.Y);
                 count++;
             }
-            Console.WriteLine(ufoList[0].Location);
         }
 
         //stop the music if user is closing the form
