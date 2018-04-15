@@ -37,7 +37,7 @@ namespace Arcade
                 string CursorPath = Debugfile.Remove(Debugfile.Length - 10, 10);
                 this.Cursor = new Cursor(CursorPath + "\\Resources\\DuckHuntReticle.cur");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -90,12 +90,12 @@ namespace Arcade
                 textCoordY += 2;
                 welcomeLogo.Location = new Point(312, textCoordY);
             }
-            else if (textCoordY > -302 && !moveWelcomeLogoDown)
+            else if (textCoordY > -500 && !moveWelcomeLogoDown)
             {
                 textCoordY -= 2;
                 welcomeLogo.Location = new Point(312, textCoordY);
             }
-            else if(textCoordY==100)
+            else if (textCoordY == 100)
             {
                 playButton.Location = new Point(354, 361);
                 playButton.Visible = true;
@@ -130,6 +130,7 @@ namespace Arcade
             //set origin point for object
             ufo.Location = new Point(rnd.Next(-2000, -ufo.Size.Width), rnd.Next(0, this.Height - ufo.Size.Height));
             ufo.SizeMode = PictureBoxSizeMode.StretchImage;
+            ufo.Click += new System.EventHandler(Duckhunt_Clicked);
             this.Controls.Add(ufo);
             ufoList.Add(ufo);
         }
@@ -139,8 +140,8 @@ namespace Arcade
         {
             createEnemy();
 
-            if (!gameWon)
-                runRound();
+            //if (!gameWon)
+            //runRound();
         }
 
         private void mainGame()
@@ -161,6 +162,17 @@ namespace Arcade
             for (int i = 0; i < ufoList.Count; i++)
             {
                 ufoList[i].Location = new Point(ufoList[i].Location.X + 3 * speed, ufoList[i].Location.Y);
+
+                //if ufo goes off screen, delete it
+                if (ufoList[i].Location.X > this.Width)
+                {
+                    ufoList[i].Dispose();
+                    ufoList.Remove(ufoList[i]);
+                    Console.WriteLine("destroyed");
+
+                    //run you lose function
+                }
+
                 count++;
             }
         }
@@ -169,6 +181,20 @@ namespace Arcade
         private void Duckhunt_FormClosing(object sender, FormClosingEventArgs e)
         {
             sndPlayer.Stop();
+        }
+
+        private void Duckhunt_Clicked(object sender, EventArgs e)
+        {
+            //clean up ufoList and remove the picturebox from the control
+            ufoList.Remove(sender as PictureBox);
+            this.Controls.Remove(sender as PictureBox);
+
+            //all of the ufos have been destroyed
+            if (ufoList.Count == 0)
+            {
+                currentRound++;
+                runRound();
+            }
         }
     }
 }
