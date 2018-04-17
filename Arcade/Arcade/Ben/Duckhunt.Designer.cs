@@ -34,6 +34,8 @@
             this.movingObjects = new System.Windows.Forms.Timer(this.components);
             this.playButton = new System.Windows.Forms.PictureBox();
             this.welcomeLogo = new System.Windows.Forms.PictureBox();
+            this.numOfRoundsLabel = new System.Windows.Forms.Label();
+            this.scoreLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.playButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.welcomeLogo)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +78,32 @@
             this.welcomeLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.welcomeLogo.TabIndex = 1;
             this.welcomeLogo.TabStop = false;
-            this.welcomeLogo.Click += new System.EventHandler(this.welcomeLogo_Click);
+            // 
+            // numOfRoundsLabel
+            // 
+            this.numOfRoundsLabel.AutoSize = true;
+            this.numOfRoundsLabel.BackColor = System.Drawing.Color.Transparent;
+            this.numOfRoundsLabel.Font = new System.Drawing.Font("Magneto", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numOfRoundsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(61)))), ((int)(((byte)(142)))));
+            this.numOfRoundsLabel.Location = new System.Drawing.Point(1158, 9);
+            this.numOfRoundsLabel.Name = "numOfRoundsLabel";
+            this.numOfRoundsLabel.Size = new System.Drawing.Size(110, 25);
+            this.numOfRoundsLabel.TabIndex = 3;
+            this.numOfRoundsLabel.Text = "Round: 1";
+            this.numOfRoundsLabel.Visible = false;
+            // 
+            // scoreLabel
+            // 
+            this.scoreLabel.AutoSize = true;
+            this.scoreLabel.BackColor = System.Drawing.Color.Transparent;
+            this.scoreLabel.Font = new System.Drawing.Font("Magneto", 15.75F, System.Drawing.FontStyle.Bold);
+            this.scoreLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(61)))), ((int)(((byte)(142)))));
+            this.scoreLabel.Location = new System.Drawing.Point(1029, 9);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(114, 25);
+            this.scoreLabel.TabIndex = 4;
+            this.scoreLabel.Text = "Score: 0";
+            this.scoreLabel.Visible = false;
             // 
             // Duckhunt
             // 
@@ -86,12 +113,14 @@
             this.BackgroundImage = global::Arcade.Properties.Resources.grid;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1280, 700);
+            this.Controls.Add(this.scoreLabel);
+            this.Controls.Add(this.numOfRoundsLabel);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.welcomeLogo);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Duckhunt";
-            this.Text = "Duckhunt";
+            this.Text = "Spacehunt";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Duckhunt_FormClosing);
             this.Load += new System.EventHandler(this.Duckhunt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.playButton)).EndInit();
@@ -108,5 +137,7 @@
         private System.Windows.Forms.Timer movingObjects;
         private System.Windows.Forms.PictureBox welcomeLogo;
         private System.Windows.Forms.PictureBox playButton;
+        private System.Windows.Forms.Label numOfRoundsLabel;
+        private System.Windows.Forms.Label scoreLabel;
     }
 }

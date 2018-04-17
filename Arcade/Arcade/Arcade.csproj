@@ -113,6 +113,7 @@
     </Compile>
     <None Include="Resources\grid.psd" />
     <None Include="Resources\spaceship.psd" />
+    <None Include="Resources\ufo.psd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -167,6 +168,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\spacehunt_music.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ufo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\laser_sound.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
