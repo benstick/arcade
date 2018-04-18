@@ -19,6 +19,8 @@ namespace Arcade
             InitializeComponent();
         }
 
+        Random rnd = new Random();
+
         private List<PictureBox> ufoList = new List<PictureBox>();
         private SoundPlayer sndPlayer = null;
         private int textCoordY = -300;
@@ -125,11 +127,23 @@ namespace Arcade
         private void createEnemy()
         {
             PictureBox ufo = new PictureBox();
-            Random rnd = new Random();
+
             ufo.Image = Properties.Resources.ufo;
             ufo.Size = new Size(80, 35);
-            //set origin point for object
+
             ufo.Location = new Point(rnd.Next(-2000, -ufo.Size.Width), rnd.Next(50, this.Height - ufo.Size.Height - 50));
+            //make sure ufo isn't in the same position as any other ufos
+            if (ufoList.Count > 0)
+            {
+                for (int i = 0; i < ufoList.Count; i++)
+                {
+                    while (ufoList[i].Bounds.IntersectsWith(ufo.Bounds))
+                    {
+                        ufo.Location = new Point(rnd.Next(-2000, -ufo.Size.Width), rnd.Next(50, this.Height - ufo.Size.Height - 50));
+                    }
+                }
+            }
+
             ufo.SizeMode = PictureBoxSizeMode.StretchImage;
             ufo.BackColor = Color.Transparent;
             ufo.Click += new System.EventHandler(Duckhunt_Clicked);
@@ -148,7 +162,7 @@ namespace Arcade
             }
 
             //spawn the correct number of ufos
-            for (int i = 0; i <= numOfUfos; i++)
+            for (int i = 1; i <= numOfUfos; i++)
                 createEnemy();
         }
 
@@ -179,6 +193,8 @@ namespace Arcade
                     Console.WriteLine("destroyed");
 
                     //run you lose function
+                    movingObjects.Enabled = false;
+                    //loseScreen.Visible = true;
                 }
 
                 count++;
@@ -194,13 +210,14 @@ namespace Arcade
         private void Duckhunt_Clicked(object sender, EventArgs e)
         {
             //clean up ufoList and remove the picturebox from the control
-            ufoList.Remove(sender as PictureBox);
-            this.Controls.Remove(sender as PictureBox);
+            PictureBox temp = sender as PictureBox;
+            ufoList.Remove(temp);
+            this.Controls.Remove(temp);
 
             //add points to score
-            scoreLabel.Text = "Score: " + score++;
+            scoreLabel.Text = "Score: " + ++score;
 
-            Console.WriteLine(score); //print out score for debugging
+            Console.WriteLine($"Round: {currentRound}  UFO's: {ufoList.Count} Score: {score}"); //print out score for debugging
 
             //play laser sound
             //playAudio(Properties.Resources.laser_sound, false);
@@ -214,6 +231,11 @@ namespace Arcade
                 numOfRoundsLabel.Text = "Round: " + currentRound;
                 runRound();
             }
+        }
+
+        private void scoreLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
