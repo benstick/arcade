@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{49CBBAE0-91C6-4E96-98C9-55B85D53D5DD}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>Arcade</RootNamespace>
     <AssemblyName>Arcade</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -113,6 +113,7 @@
     </Compile>
     <None Include="Resources\grid.psd" />
     <None Include="Resources\spaceship.psd" />
+    <None Include="Resources\ufo.psd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -166,10 +167,16 @@
     <None Include="Resources\reticle.cur" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DuckhuntBackgroundMusic.mp3" />
+    <None Include="Resources\spacehunt_music.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\EightBitSpace.wav" />
+    <None Include="Resources\ufo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\laser_sound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ufo2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

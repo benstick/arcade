@@ -15,6 +15,7 @@ namespace Arcade
         int speed = 15;
         int gravity = 5;
         int Score = 0;
+        List<PictureBox> Obstacle = new List<PictureBox>();
 
         bool jumping = false;
 
@@ -24,8 +25,18 @@ namespace Arcade
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
+            
         }
 
+        void AddObstacle()
+        {
+            Obstacle.Add(ObstacleTop);
+            Obstacle.Add(ObstacleBottom);
+            Obstacle.Add(MiddleObstacle1);
+            Obstacle.Add(MiddleObstacle2);
+            Obstacle.Add(SkyBounds);
+            Obstacle.Add(Ground);
+        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -38,40 +49,28 @@ namespace Arcade
             ScoreText.Text = Score.ToString();
             Random rand = new Random();
 
-
-            if (
-                Copter.Bounds.IntersectsWith(Ground.Bounds) || 
-                Copter.Bounds.IntersectsWith(SkyBounds.Bounds) ||
-                Copter.Bounds.IntersectsWith(ObstacleBottom.Bounds)||
-                Copter.Bounds.IntersectsWith(ObstacleTop.Bounds)||
-                Copter.Bounds.IntersectsWith(MiddleObstacle1.Bounds)||
-                Copter.Bounds.IntersectsWith(MiddleObstacle2.Bounds)
-
-                )
+            for (int i = 0; i < Obstacle.Count; i++)
             {
-                endGame();
-                FinalScore.Text = "Your final score is:" + Score;
+                if (Copter.Bounds.IntersectsWith(Obstacle[i].Bounds)) endGame();
             }
 
             if (ObstacleBottom.Left < -150)
             {
-                ObstacleBottom.Left = rand.Next(900, 2500);  Score++;
-                ObstacleBottom.Top = rand.Next(0, 600);
-                speed++;
+
             }
             else if (ObstacleTop.Left < -150)
             {
-                ObstacleTop.Left = rand.Next(900, 2500);  Score++;
+                ObstacleTop.Left = rand.Next(900, 2500); Score++;
                 ObstacleTop.Top = rand.Next(0, 600);
             }
             else if (MiddleObstacle1.Left < -150)
             {
-                MiddleObstacle1.Left = rand.Next(900, 2500);  Score++;
+                MiddleObstacle1.Left = rand.Next(900, 2500); Score++;
                 MiddleObstacle1.Top = rand.Next(0, 600);
             }
             else if (MiddleObstacle2.Left < -150)
             {
-                MiddleObstacle2.Left = rand.Next(900, 2500);  Score++;
+                MiddleObstacle2.Left = rand.Next(900, 2500); Score++;
                 MiddleObstacle2.Top = rand.Next(0, 600);
             }
 
@@ -97,7 +96,7 @@ namespace Arcade
          void reset()
         {
             speed = 15;
-            gravity = 5;
+            gravity = 7;
             Score = 0;
             Random rand = new Random();
             ObstacleBottom.Left = rand.Next(900, 2500);
@@ -124,6 +123,7 @@ namespace Arcade
         {
             if (e.KeyCode == Keys.Space)
             {
+                AddObstacle();
                 jumping = true;
                 gravity = -5;
             }
@@ -174,7 +174,7 @@ namespace Arcade
 
         private void Copter_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void ObstacleBottom_Click(object sender, EventArgs e)

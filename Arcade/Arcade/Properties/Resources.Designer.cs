@@ -19,7 +19,7 @@ namespace Arcade.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -67,15 +67,6 @@ namespace Arcade.Properties {
             get {
                 object obj = ResourceManager.GetObject("duck", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream EightBitSpace {
-            get {
-                return ResourceManager.GetStream("EightBitSpace", resourceCulture);
             }
         }
         
@@ -130,6 +121,15 @@ namespace Arcade.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream laser_sound {
+            get {
+                return ResourceManager.GetStream("laser_sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap mainlogo {
@@ -156,6 +156,15 @@ namespace Arcade.Properties {
             get {
                 object obj = ResourceManager.GetObject("reticle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream spacehunt_music {
+            get {
+                return ResourceManager.GetStream("spacehunt_music", resourceCulture);
             }
         }
         
@@ -196,6 +205,36 @@ namespace Arcade.Properties {
             get {
                 object obj = ResourceManager.GetObject("stage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ufo {
+            get {
+                object obj = ResourceManager.GetObject("ufo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ufo2 {
+            get {
+                object obj = ResourceManager.GetObject("ufo2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ufopsd {
+            get {
+                object obj = ResourceManager.GetObject("ufopsd", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

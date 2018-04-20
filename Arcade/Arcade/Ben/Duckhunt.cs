@@ -19,12 +19,17 @@ namespace Arcade
             InitializeComponent();
         }
 
+        Random rnd = new Random();
+
         private List<PictureBox> ufoList = new List<PictureBox>();
         private SoundPlayer sndPlayer = null;
         private int textCoordY = -300;
         private bool moveWelcomeLogoDown = true;
         private bool gameWon = false;
         private int currentRound = 1;
+        private int score = 0;
+        private int speed = 3; //default 3 for starting speed
+        private int numOfUfos = 1;
 
         //Runs when game is loaded up
         private void Duckhunt_Load(object sender, EventArgs e)
@@ -36,12 +41,12 @@ namespace Arcade
                 string CursorPath = Debugfile.Remove(Debugfile.Length - 10, 10);
                 this.Cursor = new Cursor(CursorPath + "\\Resources\\DuckHuntReticle.cur");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
 
-            playAudio(Properties.Resources.EightBitSpace, true);
+            playAudio(Properties.Resources.spacehunt_music, true);
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             welcomeTextTimer.Enabled = true;
@@ -77,11 +82,6 @@ namespace Arcade
 
         }
 
-        private void welcomeTitleLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void welcomeTextTimer_Tick(object sender, EventArgs e)
         {
             if (textCoordY < 100 && moveWelcomeLogoDown)
@@ -89,12 +89,12 @@ namespace Arcade
                 textCoordY += 2;
                 welcomeLogo.Location = new Point(312, textCoordY);
             }
-            else if (textCoordY > -302 && !moveWelcomeLogoDown)
+            else if (textCoordY > -500 && !moveWelcomeLogoDown)
             {
-                textCoordY -= 2;
+                textCoordY -= 4;
                 welcomeLogo.Location = new Point(312, textCoordY);
             }
-            else if(textCoordY==100)
+            else if (textCoordY == 100)
             {
                 playButton.Location = new Point(354, 361);
                 playButton.Visible = true;
@@ -116,6 +116,10 @@ namespace Arcade
             //move welcome logo up
             moveWelcomeLogoDown = false;
             welcomeTextTimer.Enabled = true;
+
+            scoreLabel.Visible = true;
+            numOfRoundsLabel.Visible = true;
+
             mainGame();
         }
 
@@ -123,12 +127,26 @@ namespace Arcade
         private void createEnemy()
         {
             PictureBox ufo = new PictureBox();
-            Random rnd = new Random();
-            ufo.Image = Properties.Resources.spaceship;
-            ufo.Size = new Size(45, 65);
-            //set origin point for object
-            ufo.Location = new Point(rnd.Next(0, this.Width - ufo.Size.Width), this.Height - 200);
+
+            ufo.Image = Properties.Resources.ufo;
+            ufo.Size = new Size(80, 35);
+
+            ufo.Location = new Point(rnd.Next(-2000, -ufo.Size.Width), rnd.Next(50, this.Height - ufo.Size.Height - 50));
+            //make sure ufo isn't in the same position as any other ufos
+            if (ufoList.Count > 0)
+            {
+                for (int i = 0; i < ufoList.Count; i++)
+                {
+                    while (ufoList[i].Bounds.IntersectsWith(ufo.Bounds))
+                    {
+                        ufo.Location = new Point(rnd.Next(-2000, -ufo.Size.Width), rnd.Next(50, this.Height - ufo.Size.Height - 50));
+                    }
+                }
+            }
+
             ufo.SizeMode = PictureBoxSizeMode.StretchImage;
+            ufo.BackColor = Color.Transparent;
+            ufo.Click += new System.EventHandler(Duckhunt_Clicked);
             this.Controls.Add(ufo);
             ufoList.Add(ufo);
         }
@@ -136,42 +154,88 @@ namespace Arcade
         //displays current round
         private void runRound()
         {
-            createEnemy();
+            //if the round # is divisible by 5, add another ufo to the round and increase speed
+            if (currentRound % 5 == 0)
+            {
+                numOfUfos++;
+                speed++;
+            }
+
+            //spawn the correct number of ufos
+            for (int i = 1; i <= numOfUfos; i++)
+                createEnemy();
         }
 
         private void mainGame()
         {
             do
             {
-                //start round
-                for (int i = 0; i <= 10; i++)
-                    runRound();
+                runRound();
 
                 movingObjects.Enabled = true;
             } while (gameWon);
         }
 
+        //move objects across the screen
         private void movingObjects_Tick(object sender, EventArgs e)
         {
             int count = 0;
 
             for (int i = 0; i < ufoList.Count; i++)
             {
-                //check which side of the screen the enemy is on
-                if (ufoList[i].Location.X < this.Width / 2)
-                    ufoList[i].Location = new Point(ufoList[i].Location.X + 3, ufoList[i].Location.Y - 3);
-                else
-                    ufoList[i].Location = new Point(ufoList[i].Location.X - 3, ufoList[i].Location.Y - 3);
+                ufoList[i].Location = new Point(ufoList[i].Location.X + speed, ufoList[i].Location.Y);
+
+                //if ufo goes off screen, delete it
+                if (ufoList[i].Location.X > this.Width)
+                {
+                    ufoList[i].Dispose();
+                    ufoList.Remove(ufoList[i]);
+                    Console.WriteLine("destroyed");
+
+                    //run you lose function
+                    movingObjects.Enabled = false;
+                    //loseScreen.Visible = true;
+                }
 
                 count++;
             }
-            Console.WriteLine(ufoList[0].Location);
         }
 
         //stop the music if user is closing the form
         private void Duckhunt_FormClosing(object sender, FormClosingEventArgs e)
         {
             sndPlayer.Stop();
+        }
+
+        private void Duckhunt_Clicked(object sender, EventArgs e)
+        {
+            //clean up ufoList and remove the picturebox from the control
+            PictureBox temp = sender as PictureBox;
+            ufoList.Remove(temp);
+            this.Controls.Remove(temp);
+
+            //add points to score
+            scoreLabel.Text = "Score: " + ++score;
+
+            Console.WriteLine($"Round: {currentRound}  UFO's: {ufoList.Count} Score: {score}"); //print out score for debugging
+
+            //play laser sound
+            //playAudio(Properties.Resources.laser_sound, false);
+
+            //possibly add explosion gif here in future for effects
+
+            //all of the ufos have been destroyed
+            if (ufoList.Count == 0)
+            {
+                currentRound++;
+                numOfRoundsLabel.Text = "Round: " + currentRound;
+                runRound();
+            }
+        }
+
+        private void scoreLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
