@@ -49,14 +49,24 @@ namespace Arcade
             ScoreText.Text = Score.ToString();
             Random rand = new Random();
 
-            for (int i = 0; i < Obstacle.Count; i++)
+            if (
+                Copter.Bounds.IntersectsWith(Ground.Bounds) ||
+                Copter.Bounds.IntersectsWith(SkyBounds.Bounds) ||
+                Copter.Bounds.IntersectsWith(ObstacleBottom.Bounds) ||
+                Copter.Bounds.IntersectsWith(ObstacleTop.Bounds) ||
+                Copter.Bounds.IntersectsWith(MiddleObstacle1.Bounds) ||
+                Copter.Bounds.IntersectsWith(MiddleObstacle2.Bounds)
+
+                )
             {
-                if (Copter.Bounds.IntersectsWith(Obstacle[i].Bounds)) endGame();
+                endGame();
             }
 
             if (ObstacleBottom.Left < -150)
             {
-
+                ObstacleBottom.Left = rand.Next(900, 2500); Score++;
+                ObstacleBottom.Top = rand.Next(0, 600);
+                speed++;
             }
             else if (ObstacleTop.Left < -150)
             {
@@ -134,7 +144,7 @@ namespace Arcade
             if (e.KeyCode == Keys.Space)
             {
                 jumping = false;
-                gravity = 3;
+                gravity = 4;
             }
         }
 
