@@ -187,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\spacehunt_music.wav" />
+
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ufo.png" />
@@ -208,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ufo1.png" />
+
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

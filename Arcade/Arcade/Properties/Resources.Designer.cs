@@ -71,6 +71,7 @@ namespace Arcade.Properties {
         }
         
         /// <summary>
+
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap explosion {
@@ -81,6 +82,7 @@ namespace Arcade.Properties {
         }
         
         /// <summary>
+
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap flight1 {
@@ -127,6 +129,15 @@ namespace Arcade.Properties {
             get {
                 object obj = ResourceManager.GetObject("grid1", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream laser_sound {
+            get {
+                return ResourceManager.GetStream("laser_sound", resourceCulture);
             }
         }
         
@@ -249,6 +260,7 @@ namespace Arcade.Properties {
         }
         
         /// <summary>
+
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap ufo1 {
@@ -269,6 +281,7 @@ namespace Arcade.Properties {
         }
         
         /// <summary>
+
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] ufopsd {
