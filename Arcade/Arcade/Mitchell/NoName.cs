@@ -235,6 +235,7 @@ namespace Arcade
 
 
                 //draw
+                //player
                 ufo.Location = player.ufo.ToPoint(player.ufo.position);//player position
                 player.ufo.RotateImage(ufo, Properties.Resources.ufo1, player.ufo.facingDegrees);//player rotation
 

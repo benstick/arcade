@@ -146,7 +146,7 @@ namespace Arcade
 
             ufo.SizeMode = PictureBoxSizeMode.StretchImage;
             ufo.BackColor = Color.Transparent;
-            ufo.Click += new System.EventHandler(Duckhunt_Clicked);
+            ufo.MouseDown += Duckhunt_MouseButtonDown;
             this.Controls.Add(ufo);
             ufoList.Add(ufo);
         }
@@ -207,7 +207,7 @@ namespace Arcade
             sndPlayer.Stop();
         }
 
-        private void Duckhunt_Clicked(object sender, EventArgs e)
+        private void Duckhunt_MouseButtonDown(object sender, MouseEventArgs e)
         {
             //clean up ufoList and remove the picturebox from the control
             PictureBox temp = sender as PictureBox;
