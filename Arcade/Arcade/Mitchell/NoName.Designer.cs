@@ -57,7 +57,7 @@
             // ufo
             // 
             this.ufo.Image = global::Arcade.Properties.Resources.ufo1;
-            this.ufo.Location = new System.Drawing.Point(371, 134);
+            this.ufo.Location = new System.Drawing.Point(352, 15);
             this.ufo.Name = "ufo";
             this.ufo.Size = new System.Drawing.Size(50, 50);
             this.ufo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -111,7 +111,7 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Health";
             // 
-            // MainGame
+            // NoName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -125,7 +125,7 @@
             this.Controls.Add(this.ground);
             this.Controls.Add(this.ufo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "MainGame";
+            this.Name = "NoName";
             this.Text = "Game";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ground)).EndInit();

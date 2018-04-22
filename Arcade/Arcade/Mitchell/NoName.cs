@@ -188,14 +188,11 @@ namespace Arcade
                 //(player projectiles, fly enemy)
                 for (int i = 0; i < player.projectilepictureBoxes.Count; i++)
                 {
-                    for (int j = 0; j < Flyenemies.flyEnemiespictureBoxes.Count; j++)
+                    for (int j = 0; j < Flyenemies.flyEnemies.Count-1; j++)
                     {
                         if (player.projectilepictureBoxes[i].Bounds.IntersectsWith(Flyenemies.flyEnemiespictureBoxes[j].Bounds))
                         {
                             Flyenemies.flyEnemies[j].Health -= player.projectiles[i].Damage;
-                            player.projectilepictureBoxes[i].Dispose();
-                            player.projectilepictureBoxes.RemoveAt(i);
-                            player.projectiles.RemoveAt(i);
 
                             if (Flyenemies.flyEnemies[j].Health <= 0)
                             {
@@ -203,6 +200,10 @@ namespace Arcade
                                 Flyenemies.flyEnemiespictureBoxes.RemoveAt(j);
                                 Flyenemies.flyEnemies.RemoveAt(j);
                             }
+                            player.projectilepictureBoxes[i].Dispose();
+                            player.projectilepictureBoxes.RemoveAt(i);
+                            player.projectiles.RemoveAt(i);
+                            break;
                         }
                     }
                 }
@@ -248,6 +249,7 @@ namespace Arcade
                 //fly enemy
                 for (int i = 0; i < Flyenemies.flyEnemiespictureBoxes.Count; i++)
                 {
+                    Flyenemies.flyEnemies[i].image = Properties.Resources.flight1;
                     Flyenemies.flyEnemies[i].Draw(Flyenemies.flyEnemiespictureBoxes[i]);
                     this.Controls.Add(Flyenemies.flyEnemiespictureBoxes[i]);
 
