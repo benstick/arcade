@@ -55,6 +55,9 @@ namespace Arcade
                 FlappyCopterDemo.Enabled = true;
                 FlappyCopterDemo.Visible = true;
 
+                NoNameDemo.Enabled = true;
+                NoNameDemo.Visible = true;
+
                 //disable labels of guide
                 label1.Visible = false;
                 ExitLabel.Visible = false;
@@ -102,6 +105,12 @@ namespace Arcade
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void NoNameDemo_Click(object sender, EventArgs e)
+        {
+            NoName noName = new NoName();
+            noName.Show();
         }
     }
 }

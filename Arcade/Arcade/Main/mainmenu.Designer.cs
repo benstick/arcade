@@ -36,7 +36,7 @@
             this.DuckhuntDemo = new System.Windows.Forms.PictureBox();
             this.FlappyCopterDemo = new System.Windows.Forms.PictureBox();
             this.SankeDemo = new System.Windows.Forms.PictureBox();
-            this.CarDoggingDemo = new System.Windows.Forms.PictureBox();
+            this.NoNameDemo = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -44,8 +44,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DuckhuntDemo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FlappyCopterDemo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SankeDemo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CarDoggingDemo)).BeginInit();
-            this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NoNameDemo)).BeginInit();
             this.SuspendLayout();
             // 
             // FadeinTimer
@@ -105,21 +104,28 @@
             // 
             // SankeDemo
             // 
-            this.SankeDemo.Location = new System.Drawing.Point(0, 0);
-            this.SankeDemo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SankeDemo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.SankeDemo.Enabled = false;
+            this.SankeDemo.Location = new System.Drawing.Point(150, 318);
+            this.SankeDemo.Margin = new System.Windows.Forms.Padding(2);
             this.SankeDemo.Name = "SankeDemo";
             this.SankeDemo.Size = new System.Drawing.Size(75, 41);
             this.SankeDemo.TabIndex = 10;
             this.SankeDemo.TabStop = false;
+            this.SankeDemo.Visible = false;
             // 
-            // CarDoggingDemo
+            // NoNameDemo
             // 
-            this.CarDoggingDemo.Location = new System.Drawing.Point(0, 0);
-            this.CarDoggingDemo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.CarDoggingDemo.Name = "CarDoggingDemo";
-            this.CarDoggingDemo.Size = new System.Drawing.Size(75, 41);
-            this.CarDoggingDemo.TabIndex = 9;
-            this.CarDoggingDemo.TabStop = false;
+            this.NoNameDemo.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.NoNameDemo.Enabled = false;
+            this.NoNameDemo.Location = new System.Drawing.Point(491, 296);
+            this.NoNameDemo.Margin = new System.Windows.Forms.Padding(2);
+            this.NoNameDemo.Name = "NoNameDemo";
+            this.NoNameDemo.Size = new System.Drawing.Size(136, 93);
+            this.NoNameDemo.TabIndex = 9;
+            this.NoNameDemo.TabStop = false;
+            this.NoNameDemo.Visible = false;
+            this.NoNameDemo.Click += new System.EventHandler(this.NoNameDemo_Click);
             // 
             // toolStrip1
             // 
@@ -168,7 +174,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.CarDoggingDemo);
+            this.Controls.Add(this.NoNameDemo);
             this.Controls.Add(this.SankeDemo);
             this.Controls.Add(this.FlappyCopterDemo);
             this.Controls.Add(this.DuckhuntDemo);
@@ -183,9 +189,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DuckhuntDemo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FlappyCopterDemo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SankeDemo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CarDoggingDemo)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NoNameDemo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,7 +203,7 @@
         private System.Windows.Forms.PictureBox DuckhuntDemo;
         private System.Windows.Forms.PictureBox FlappyCopterDemo;
         private System.Windows.Forms.PictureBox SankeDemo;
-        private System.Windows.Forms.PictureBox CarDoggingDemo;
+        private System.Windows.Forms.PictureBox NoNameDemo;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
