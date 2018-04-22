@@ -89,9 +89,10 @@ class Vector2dObject
         if (pictureBox.Image == null)
         {
             pictureBox.Image = image;
-            RotateImage(pictureBox, image,facingDegrees);
+
             pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
         }
+        RotateImage(pictureBox, image, facingDegrees);
         pictureBox.Location = new Point((int)position.X, (int)position.Y);
 
     }
