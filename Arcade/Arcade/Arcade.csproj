@@ -52,6 +52,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,28 +79,43 @@
     <Compile Include="Cam\FlappyCopter.Designer.cs">
       <DependentUpon>FlappyCopter.cs</DependentUpon>
     </Compile>
-    <Compile Include="mainmenu.cs">
+    <Compile Include="Mitchell\FlyEnemy.cs" />
+    <Compile Include="Main\mainmenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="mainmenu.Designer.cs">
+    <Compile Include="Main\mainmenu.Designer.cs">
       <DependentUpon>mainmenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Main\Program.cs" />
+    <Compile Include="Mitchell\NoName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mitchell\NoName.Designer.cs">
+      <DependentUpon>NoName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mitchell\PlayerControl.cs" />
+    <Compile Include="Mitchell\Projectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Mitchell\Utilities.cs" />
+    <Compile Include="Mitchell\Vector2dObject.cs" />
     <EmbeddedResource Include="Cam\FlappyCopter.resx">
       <DependentUpon>FlappyCopter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ben\Duckhunt.resx">
       <DependentUpon>Duckhunt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="mainmenu.resx">
+    <EmbeddedResource Include="Main\mainmenu.resx">
       <DependentUpon>mainmenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mitchell\NoName.resx">
+      <DependentUpon>NoName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Main\packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -116,7 +135,7 @@
     <None Include="Resources\ufo.psd" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Main\App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\mainlogo.JPG" />
@@ -168,12 +187,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\spacehunt_music.wav" />
+
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ufo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\laser_sound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ufo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flight1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projectile1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ufo1.png" />
+
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
