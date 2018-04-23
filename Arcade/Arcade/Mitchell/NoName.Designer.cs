@@ -94,7 +94,7 @@
             // ground
             // 
             this.ground.Image = global::Arcade.Properties.Resources.ground;
-            this.ground.Location = new System.Drawing.Point(-122, 515);
+            this.ground.Location = new System.Drawing.Point(-113, 515);
             this.ground.Name = "ground";
             this.ground.Size = new System.Drawing.Size(1000, 50);
             this.ground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

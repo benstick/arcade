@@ -123,7 +123,10 @@ namespace Arcade
                 //create ground enemy
                 for (int i = GroundEnemies.groundEnemies.Count; i < groundenemiesNumber; i++)
                 {
-                    GroundEnemies.position = new Vector2((float)random.Next(-100, 1000),ground.Location.Y);
+                    int rand = random.Next(1,1000);
+                    if(rand>=500) GroundEnemies.position = new Vector2(ground.Location.X+ground.Width-random.Next(1,200), ground.Location.Y);
+                    else if(rand<500) GroundEnemies.position = new Vector2(ground.Location.X+random.Next(0,200), ground.Location.Y);
+
                     GroundEnemies.TargetPos = player.ufo.position + player.ufo._size / 2;
                     GroundEnemies.accelAmount = 20.0f;
                     GroundEnemies.Health = 100;
@@ -223,6 +226,29 @@ namespace Arcade
                         }
                     }
                 }
+                //(player projectiles, ground enemy)
+                for (int i = 0; i < player.projectilepictureBoxes.Count; i++)
+                {
+                    for (int j = 0; j < GroundEnemies.groundEnemies.Count - 1; j++)
+                    {
+                        if (player.projectilepictureBoxes[i].Bounds.IntersectsWith(GroundEnemies.groundEnemiesPictureBoxes[j].Bounds))
+                        {
+                            GroundEnemies.groundEnemies[j].Health -= player.projectiles[i].Damage;
+
+                            if (GroundEnemies.groundEnemies[j].Health <= 0)
+                            {
+                                GroundEnemies.groundEnemiesPictureBoxes[j].Dispose();
+                                GroundEnemies.groundEnemiesPictureBoxes.RemoveAt(j);
+                                GroundEnemies.groundEnemies.RemoveAt(j);
+                            }
+                            player.projectilepictureBoxes[i].Dispose();
+                            player.projectilepictureBoxes.RemoveAt(i);
+                            player.projectiles.RemoveAt(i);
+                            break;
+                        }
+                    }
+                }
+
                 //(ground enemy, ground)
                 for (int i = 0; i < GroundEnemies.groundEnemiesPictureBoxes.Count; i++)
                 {
