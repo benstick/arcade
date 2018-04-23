@@ -205,6 +205,9 @@ namespace Arcade
         private void Duckhunt_FormClosing(object sender, FormClosingEventArgs e)
         {
             sndPlayer.Stop();
+            Form form = Application.OpenForms["MainMenu"];
+            form.WindowState = FormWindowState.Normal;
+            form.Activate();
         }
 
         private void Duckhunt_MouseButtonDown(object sender, MouseEventArgs e)

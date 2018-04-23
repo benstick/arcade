@@ -124,7 +124,7 @@
             // ufo
             // 
             this.ufo.Image = global::Arcade.Properties.Resources.ufo1;
-            this.ufo.Location = new System.Drawing.Point(508, 15);
+            this.ufo.Location = new System.Drawing.Point(311, 318);
             this.ufo.Name = "ufo";
             this.ufo.Size = new System.Drawing.Size(50, 50);
             this.ufo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -165,6 +165,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "NoName";
             this.Text = "Game";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NoName_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.WallRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WallLeft)).EndInit();

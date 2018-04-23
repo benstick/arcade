@@ -158,53 +158,12 @@ namespace Arcade
             
         }
 
-        private void MiddleObstacle1_Click(object sender, EventArgs e)
+        private void FlappyCopter_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            Form form = Application.OpenForms["MainMenu"];
+            form.WindowState = FormWindowState.Normal;
+            form.Activate();
         }
 
-        private void MiddleObstacle2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SpeedLabel_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void FlappyCopter_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ObstacleTop_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Copter_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void ObstacleBottom_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void SkyBounds_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Ground_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void ScoreText_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

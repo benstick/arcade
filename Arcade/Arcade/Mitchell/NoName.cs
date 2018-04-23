@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Numerics;
+using System.Collections;
 
 
 namespace Arcade
@@ -23,7 +24,7 @@ namespace Arcade
 
         //add stat
         int Score=0;
-        float FPS = 0;
+        int FPS = 0;
 
         //add walls
         List<PictureBox> Walls = new List<PictureBox>();
@@ -39,7 +40,8 @@ namespace Arcade
         GroundEnemy GroundEnemies = new GroundEnemy();
         uint groundenemiesNumber;
 
-        //exit form check
+        //form check
+        bool Intro = true;
         public bool exit = false;
 
         public NoName()
@@ -49,8 +51,13 @@ namespace Arcade
 
         void HowToPlay(Timer timer)
         {
+            timer.Stop();
             DialogResult dr = MessageBox.Show("Move : WASD\nShoot: left click\nExit: Escape\nClick \"OK\" to start", "How to play", MessageBoxButtons.OK);
-            if (dr == DialogResult.OK) timer.Start();
+            if (dr == DialogResult.OK)
+            {
+                Intro = false;
+                timer.Start();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -79,10 +86,9 @@ namespace Arcade
             //setup timer
             GameloopTimer.Interval = (int)TargetElapsedTime.TotalMilliseconds;
             GameloopTimer.Tick += Tick;
+            GameloopTimer.Start();
             FPSTimer.Start();
 
-           //tell player how to play in messagebox then start if player clicks "OK"
-            HowToPlay(GameloopTimer);
         }
 
         //frame rate control
@@ -124,7 +130,8 @@ namespace Arcade
 
             if (updated)
             {
-
+                //tell player how to play in messagebox then start if player clicks "OK"
+                if(Intro==true) HowToPlay(GameloopTimer);
                 //create fly enemy
                 for (int i = Flyenemies.flyEnemies.Count; i < flyenemiesNumber; i++)
                 {
@@ -361,7 +368,7 @@ namespace Arcade
 
                 //cooldown for cpu
                 System.Threading.Thread.Sleep(1);
-                FPS += dt;
+                FPS++;
 
                 //test
             }
@@ -375,8 +382,16 @@ namespace Arcade
 
         private void FPSTimer_Tick(object sender, EventArgs e)
         {
-            FPSLabel.Text = "FPS : " + Math.Round(FPS*100.0f, 3).ToString();
-            FPS = 0.0f;
+            FPSLabel.Text = "FPS : " + FPS.ToString();
+            FPS = 0;
+        }
+
+        private void NoName_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form form = Application.OpenForms["MainMenu"];
+            form.WindowState = FormWindowState.Normal;
+            form.Activate();
+            
         }
     }
 }

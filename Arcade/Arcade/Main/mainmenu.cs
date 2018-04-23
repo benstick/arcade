@@ -27,12 +27,12 @@ namespace Arcade
         //fade in intro screen timer
         private void FadeinTimer_Tick(object sender, EventArgs e)
         {
-            if(this.Opacity <= 1.0)
+            if (this.Opacity <= 1.0)
             {
                 this.Opacity += 0.025;
             }
 
-            if(this.Opacity>=1.0)
+            if (this.Opacity >= 1.0)
             {
                 label1.Visible = true;
                 ExitLabel.Visible = true;
@@ -79,19 +79,59 @@ namespace Arcade
                 Application.Exit();
         }
 
+        //
+
         //to other games
         private void DuckhuntDemo_Click(object sender, EventArgs e)
         {
             Duckhunt duckhunt = new Duckhunt();
-            duckhunt.Show();
+            if (Application.OpenForms["duckhunt"] == null)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                duckhunt.Show();
+                duckhunt.Activate();
+            }
+            else
+            {
+                duckhunt.Activate();
+                this.WindowState = FormWindowState.Minimized;
+            }
         }
 
         private void FlappyCopterDemo_Click(object sender, EventArgs e)
         {
             FlappyCopter copter = new FlappyCopter();
-            copter.Show();
+            if (Application.OpenForms["FlappyCopter"] == null)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                copter.Show();
+                copter.Activate();
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Minimized;
+                Application.OpenForms["FlappyCopter"].BringToFront();
+                copter.Activate();
+            }
         }
 
+        private void NoNameDemo_Click(object sender, EventArgs e)
+        {
+            NoName noName = new NoName();
+            if (Application.OpenForms["NoName"] == null)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                noName.Show();
+                noName.Activate();
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Minimized;
+                noName.Activate();
+            }
+        }
+
+        //tool bar
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             Application.Restart();
@@ -107,10 +147,5 @@ namespace Arcade
             Application.Exit();
         }
 
-        private void NoNameDemo_Click(object sender, EventArgs e)
-        {
-            NoName noName = new NoName();
-            noName.Show();
-        }
     }
 }
