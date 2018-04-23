@@ -20,6 +20,9 @@ namespace Arcade
         //add player
         PlayerControl player = new PlayerControl();
 
+        //add Score
+        int Score=0;
+
         //add walls
         List<PictureBox> Walls = new List<PictureBox>();
 
@@ -207,14 +210,16 @@ namespace Arcade
                 //(player projectiles, fly enemy)
                 for (int i = 0; i < player.projectilepictureBoxes.Count; i++)
                 {
-                    for (int j = 0; j < Flyenemies.flyEnemies.Count-1; j++)
+                    for (int j = 0; j < Flyenemies.flyEnemies.Count; j++)
                     {
                         if (player.projectilepictureBoxes[i].Bounds.IntersectsWith(Flyenemies.flyEnemiesPictureBoxes[j].Bounds))
                         {
                             Flyenemies.flyEnemies[j].Health -= player.projectiles[i].Damage;
+                            ScoreLabel.Text = "Score : " + (Score += 50).ToString();
 
                             if (Flyenemies.flyEnemies[j].Health <= 0)
                             {
+                                ScoreLabel.Text = "Score : " + (Score += 100).ToString();
                                 Flyenemies.flyEnemiesPictureBoxes[j].Dispose();
                                 Flyenemies.flyEnemiesPictureBoxes.RemoveAt(j);
                                 Flyenemies.flyEnemies.RemoveAt(j);
@@ -229,14 +234,16 @@ namespace Arcade
                 //(player projectiles, ground enemy)
                 for (int i = 0; i < player.projectilepictureBoxes.Count; i++)
                 {
-                    for (int j = 0; j < GroundEnemies.groundEnemies.Count - 1; j++)
+                    for (int j = 0; j < GroundEnemies.groundEnemies.Count; j++)
                     {
                         if (player.projectilepictureBoxes[i].Bounds.IntersectsWith(GroundEnemies.groundEnemiesPictureBoxes[j].Bounds))
                         {
                             GroundEnemies.groundEnemies[j].Health -= player.projectiles[i].Damage;
+                            ScoreLabel.Text = "Score : " + (Score += 50).ToString();
 
                             if (GroundEnemies.groundEnemies[j].Health <= 0)
                             {
+                                ScoreLabel.Text = "Score : " + (Score += 100).ToString();
                                 GroundEnemies.groundEnemiesPictureBoxes[j].Dispose();
                                 GroundEnemies.groundEnemiesPictureBoxes.RemoveAt(j);
                                 GroundEnemies.groundEnemies.RemoveAt(j);

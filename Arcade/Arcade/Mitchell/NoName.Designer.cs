@@ -37,6 +37,7 @@
             this.WallTop = new System.Windows.Forms.PictureBox();
             this.ground = new System.Windows.Forms.PictureBox();
             this.ufo = new System.Windows.Forms.PictureBox();
+            this.ScoreLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.WallRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WallLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WallTop)).BeginInit();
@@ -104,12 +105,22 @@
             // ufo
             // 
             this.ufo.Image = global::Arcade.Properties.Resources.ufo1;
-            this.ufo.Location = new System.Drawing.Point(352, 15);
+            this.ufo.Location = new System.Drawing.Point(508, 15);
             this.ufo.Name = "ufo";
             this.ufo.Size = new System.Drawing.Size(50, 50);
             this.ufo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.ufo.TabIndex = 0;
             this.ufo.TabStop = false;
+            // 
+            // ScoreLabel
+            // 
+            this.ScoreLabel.AutoSize = true;
+            this.ScoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScoreLabel.Location = new System.Drawing.Point(307, 15);
+            this.ScoreLabel.Name = "ScoreLabel";
+            this.ScoreLabel.Size = new System.Drawing.Size(81, 20);
+            this.ScoreLabel.TabIndex = 7;
+            this.ScoreLabel.Text = "Score : 0";
             // 
             // NoName
             // 
@@ -117,6 +128,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.ScoreLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.HealthBar);
             this.Controls.Add(this.WallRight);
@@ -148,6 +160,7 @@
         private System.Windows.Forms.PictureBox WallRight;
         private System.Windows.Forms.ProgressBar HealthBar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ScoreLabel;
     }
 }
 
