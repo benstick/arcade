@@ -19,7 +19,7 @@ class PlayerControl
 
         if (e.KeyCode == Keys.W) ufo.isAccelerating = true;
 
-        if (e.KeyCode == Keys.S) ;
+       // if (e.KeyCode == Keys.S) ;
 
         if (e.KeyCode == Keys.A) ufo.isTurnningLeft = true;
 
@@ -32,7 +32,7 @@ class PlayerControl
 
         if (e.KeyCode == Keys.W) ufo.isAccelerating = false;
 
-        if (e.KeyCode == Keys.S) ;
+        //if (e.KeyCode == Keys.S) ;
 
         if (e.KeyCode == Keys.A) ufo.isTurnningLeft = false;
 
@@ -62,7 +62,7 @@ class PlayerControl
 
     public void Fire()
     {
-        if (isFiring && firerate >= 0.05f)
+        if (isFiring && firerate >= 0.03f)
         {
             projectiles.Add(new Projectile(
                 ufo.position + (ufo._size / 2.0f),

@@ -82,9 +82,11 @@
             // 
             this.DuckhuntDemo.BackColor = System.Drawing.SystemColors.ControlDark;
             this.DuckhuntDemo.Enabled = false;
+            this.DuckhuntDemo.Image = global::Arcade.Properties.Resources.SpaceHuntDemoIntroSS;
             this.DuckhuntDemo.Location = new System.Drawing.Point(115, 121);
             this.DuckhuntDemo.Name = "DuckhuntDemo";
-            this.DuckhuntDemo.Size = new System.Drawing.Size(136, 97);
+            this.DuckhuntDemo.Size = new System.Drawing.Size(150, 100);
+            this.DuckhuntDemo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DuckhuntDemo.TabIndex = 2;
             this.DuckhuntDemo.TabStop = false;
             this.DuckhuntDemo.Visible = false;
@@ -94,9 +96,11 @@
             // 
             this.FlappyCopterDemo.BackColor = System.Drawing.SystemColors.ControlDark;
             this.FlappyCopterDemo.Enabled = false;
+            this.FlappyCopterDemo.Image = global::Arcade.Properties.Resources.FlappyCopterDemoSS;
             this.FlappyCopterDemo.Location = new System.Drawing.Point(491, 121);
             this.FlappyCopterDemo.Name = "FlappyCopterDemo";
-            this.FlappyCopterDemo.Size = new System.Drawing.Size(136, 97);
+            this.FlappyCopterDemo.Size = new System.Drawing.Size(150, 100);
+            this.FlappyCopterDemo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.FlappyCopterDemo.TabIndex = 5;
             this.FlappyCopterDemo.TabStop = false;
             this.FlappyCopterDemo.Visible = false;
@@ -118,10 +122,12 @@
             // 
             this.NoNameDemo.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.NoNameDemo.Enabled = false;
+            this.NoNameDemo.Image = global::Arcade.Properties.Resources.NoNameDemoSS;
             this.NoNameDemo.Location = new System.Drawing.Point(491, 296);
             this.NoNameDemo.Margin = new System.Windows.Forms.Padding(2);
             this.NoNameDemo.Name = "NoNameDemo";
-            this.NoNameDemo.Size = new System.Drawing.Size(136, 93);
+            this.NoNameDemo.Size = new System.Drawing.Size(150, 100);
+            this.NoNameDemo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.NoNameDemo.TabIndex = 9;
             this.NoNameDemo.TabStop = false;
             this.NoNameDemo.Visible = false;
