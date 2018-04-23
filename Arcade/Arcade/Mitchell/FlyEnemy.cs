@@ -13,11 +13,6 @@ class FlyEnemy : Vector2dObject
     public List<FlyEnemy> flyEnemies = new List<FlyEnemy>();
     public List<PictureBox> flyEnemiesPictureBoxes = new List<PictureBox>();
 
-
-
-
-
-
     public FlyEnemy()
     {
         facingDegrees = 0.0f;

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Numerics;
 
+
 namespace Arcade
 {
     public partial class NoName : Form
@@ -20,8 +21,9 @@ namespace Arcade
         //add player
         PlayerControl player = new PlayerControl();
 
-        //add Score
+        //add stat
         int Score=0;
+        float FPS = 0;
 
         //add walls
         List<PictureBox> Walls = new List<PictureBox>();
@@ -37,9 +39,18 @@ namespace Arcade
         GroundEnemy GroundEnemies = new GroundEnemy();
         uint groundenemiesNumber;
 
+        //exit form check
+        public bool exit = false;
+
         public NoName()
         {
             InitializeComponent();
+        }
+
+        void HowToPlay(Timer timer)
+        {
+            DialogResult dr = MessageBox.Show("Move : WASD\nShoot: left click\nExit: Escape\nClick \"OK\" to start", "How to play", MessageBoxButtons.OK);
+            if (dr == DialogResult.OK) timer.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -60,16 +71,18 @@ namespace Arcade
             Walls.Add(ground);
 
             //setup fly enemies;
-            flyenemiesNumber = 5;
+            flyenemiesNumber = 10;
 
             //setup ground enemies
-            groundenemiesNumber = 5;
+            groundenemiesNumber = 10;
 
-            //game timer start
+            //setup timer
             GameloopTimer.Interval = (int)TargetElapsedTime.TotalMilliseconds;
             GameloopTimer.Tick += Tick;
-            GameloopTimer.Start();
+            FPSTimer.Start();
 
+           //tell player how to play in messagebox then start if player clicks "OK"
+            HowToPlay(GameloopTimer);
         }
 
         //frame rate control
@@ -117,7 +130,7 @@ namespace Arcade
                 {
                     Flyenemies.position = new Vector2((float)random.Next(0, 800), -60.0f);
                     Flyenemies.TargetPos = player.ufo.position + player.ufo._size / 2;
-                    Flyenemies.accelAmount = 20.0f;
+                    Flyenemies.accelAmount = 50.0f;
                     Flyenemies.Health = 100;
                     Flyenemies.image = Properties.Resources.flight1;
                     Flyenemies.CreateEnemy();
@@ -131,13 +144,14 @@ namespace Arcade
                     else if(rand<500) GroundEnemies.position = new Vector2(ground.Location.X+random.Next(0,200), ground.Location.Y);
 
                     GroundEnemies.TargetPos = player.ufo.position + player.ufo._size / 2;
-                    GroundEnemies.accelAmount = 20.0f;
-                    GroundEnemies.Health = 100;
+                    GroundEnemies.accelAmount = 30.0f;
+                    GroundEnemies.Health = 50;
                     GroundEnemies.image = Properties.Resources.soldier;
                     GroundEnemies.CreateEnemy();
                 }
 
                 //game control
+                this.KeyDown += ExitForm;
                 this.KeyDown += player.KeyBoard_KeyDown;
                 this.KeyUp += player.KeyBoard_KeyUp;
                 this.MouseDown += player.MouseButton_Down;
@@ -271,8 +285,8 @@ namespace Arcade
                 //player
                 player.ufo.Update(dt);
                 player.Fire();
-                if (player.ufo.Health < 0) HealthBar.Value = 0;
-                else HealthBar.Value = player.ufo.Health;
+                if (player.ufo.Health < 0) HealthBarFrontColor.Width = 0;
+                else HealthBarFrontColor.Width = player.ufo.Health;
                 //player projectils
                 for (int i = 0; i < player.projectiles.Count; i++) player.projectiles[i].Update(dt);
                 //fly enemies
@@ -345,12 +359,25 @@ namespace Arcade
                 //vsync?
                 Invalidate();
 
+                //cooldown for cpu
+                System.Threading.Thread.Sleep(1);
+                FPS += dt;
+
                 //test
             }
 
         }
 
+        void ExitForm(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) this.Close();
+        }
 
+        private void FPSTimer_Tick(object sender, EventArgs e)
+        {
+            FPSLabel.Text = "FPS : " + Math.Round(FPS*100.0f, 3).ToString();
+            FPS = 0.0f;
+        }
     }
 }
 
