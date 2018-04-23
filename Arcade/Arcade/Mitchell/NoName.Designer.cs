@@ -38,6 +38,8 @@
             this.ground = new System.Windows.Forms.PictureBox();
             this.ufo = new System.Windows.Forms.PictureBox();
             this.ScoreLabel = new System.Windows.Forms.Label();
+            this.HealthBarBackColor = new System.Windows.Forms.Panel();
+            this.HealthBarFrontColor = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.WallRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WallLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WallTop)).BeginInit();
@@ -49,7 +51,7 @@
             // 
             this.HealthBar.BackColor = System.Drawing.Color.Red;
             this.HealthBar.ForeColor = System.Drawing.Color.Lime;
-            this.HealthBar.Location = new System.Drawing.Point(61, 12);
+            this.HealthBar.Location = new System.Drawing.Point(41, 70);
             this.HealthBar.Name = "HealthBar";
             this.HealthBar.Size = new System.Drawing.Size(100, 16);
             this.HealthBar.TabIndex = 5;
@@ -122,12 +124,30 @@
             this.ScoreLabel.TabIndex = 7;
             this.ScoreLabel.Text = "Score : 0";
             // 
+            // HealthBarBackColor
+            // 
+            this.HealthBarBackColor.BackColor = System.Drawing.Color.Red;
+            this.HealthBarBackColor.Location = new System.Drawing.Point(61, 15);
+            this.HealthBarBackColor.Name = "HealthBarBackColor";
+            this.HealthBarBackColor.Size = new System.Drawing.Size(100, 15);
+            this.HealthBarBackColor.TabIndex = 8;
+            // 
+            // HealthBarFrontColor
+            // 
+            this.HealthBarFrontColor.BackColor = System.Drawing.Color.Lime;
+            this.HealthBarFrontColor.Location = new System.Drawing.Point(61, 15);
+            this.HealthBarFrontColor.Name = "HealthBarFrontColor";
+            this.HealthBarFrontColor.Size = new System.Drawing.Size(100, 15);
+            this.HealthBarFrontColor.TabIndex = 9;
+            // 
             // NoName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.HealthBarFrontColor);
+            this.Controls.Add(this.HealthBarBackColor);
             this.Controls.Add(this.ScoreLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.HealthBar);
@@ -161,6 +181,8 @@
         private System.Windows.Forms.ProgressBar HealthBar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label ScoreLabel;
+        private System.Windows.Forms.Panel HealthBarBackColor;
+        private System.Windows.Forms.Panel HealthBarFrontColor;
     }
 }
 

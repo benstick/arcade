@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Numerics;
 
+
 namespace Arcade
 {
     public partial class NoName : Form
@@ -47,7 +48,7 @@ namespace Arcade
 
         void HowToPlay(Timer timer)
         {
-            DialogResult dr = MessageBox.Show("Move : WASD\nShoot: left click\nClick \"OK\" to start", "How to play", MessageBoxButtons.OK);
+            DialogResult dr = MessageBox.Show("Move : WASD\nShoot: left click\nExit: Escape\nClick \"OK\" to start", "How to play", MessageBoxButtons.OK);
             if (dr == DialogResult.OK) timer.Start();
         }
 
@@ -282,8 +283,8 @@ namespace Arcade
                 //player
                 player.ufo.Update(dt);
                 player.Fire();
-                if (player.ufo.Health < 0) HealthBar.Value = 0;
-                else HealthBar.Value = player.ufo.Health;
+                if (player.ufo.Health < 0) HealthBarFrontColor.Width = 0;
+                else HealthBarFrontColor.Width = player.ufo.Health;
                 //player projectils
                 for (int i = 0; i < player.projectiles.Count; i++) player.projectiles[i].Update(dt);
                 //fly enemies
