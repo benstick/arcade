@@ -20,6 +20,9 @@ namespace Arcade
         //add player
         PlayerControl player = new PlayerControl();
 
+        //add Score
+        int Score=0;
+
         //add walls
         List<PictureBox> Walls = new List<PictureBox>();
 
@@ -30,6 +33,10 @@ namespace Arcade
         FlyEnemy Flyenemies = new FlyEnemy();
         uint flyenemiesNumber;
 
+        //add groundEnemy
+        GroundEnemy GroundEnemies = new GroundEnemy();
+        uint groundenemiesNumber;
+
         public NoName()
         {
             InitializeComponent();
@@ -38,7 +45,6 @@ namespace Arcade
         private void Form1_Load(object sender, EventArgs e)
         {
 
-
             //setup player
             player.ufo.position = new Vector2(300.0f, 300.0f);
             player.ufo.facingDegrees = 270.0f;
@@ -46,11 +52,6 @@ namespace Arcade
             player.ufo._size.Y = ufo.Size.Height;
             player.ufo.accelAmount = 200.0f;
             player.ufo.Health = 100;
-
-            //game timer start
-            GameloopTimer.Interval = (int)TargetElapsedTime.TotalMilliseconds;
-            GameloopTimer.Tick += Tick;
-            GameloopTimer.Start();
 
             //setup walls
             Walls.Add(WallLeft);
@@ -61,6 +62,13 @@ namespace Arcade
             //setup fly enemies;
             flyenemiesNumber = 5;
 
+            //setup ground enemies
+            groundenemiesNumber = 5;
+
+            //game timer start
+            GameloopTimer.Interval = (int)TargetElapsedTime.TotalMilliseconds;
+            GameloopTimer.Tick += Tick;
+            GameloopTimer.Start();
 
         }
 
@@ -115,6 +123,20 @@ namespace Arcade
                     Flyenemies.CreateEnemy();
                 }
 
+                //create ground enemy
+                for (int i = GroundEnemies.groundEnemies.Count; i < groundenemiesNumber; i++)
+                {
+                    int rand = random.Next(1,1000);
+                    if(rand>=500) GroundEnemies.position = new Vector2(ground.Location.X+ground.Width-random.Next(1,200), ground.Location.Y);
+                    else if(rand<500) GroundEnemies.position = new Vector2(ground.Location.X+random.Next(0,200), ground.Location.Y);
+
+                    GroundEnemies.TargetPos = player.ufo.position + player.ufo._size / 2;
+                    GroundEnemies.accelAmount = 20.0f;
+                    GroundEnemies.Health = 100;
+                    GroundEnemies.image = Properties.Resources.soldier;
+                    GroundEnemies.CreateEnemy();
+                }
+
                 //game control
                 this.KeyDown += player.KeyBoard_KeyDown;
                 this.KeyUp += player.KeyBoard_KeyUp;
@@ -124,9 +146,9 @@ namespace Arcade
                 player.firerate += dt;
 
                 //colider check
+                //(player, ground)
                 if (ufo.Bounds.IntersectsWith(ground.Bounds))//landed on ground
                 {
-                    //make them to a function later
                     player.ufo.gravity = 0.0f;
                     player.ufo.velocity = new Vector2(0, 0);
                     player.ufo.isTurnningLeft = false;
@@ -175,29 +197,31 @@ namespace Arcade
                     }
                 }
                 //(fly enemy, player)
-                for (int i = 0; i < Flyenemies.flyEnemiespictureBoxes.Count; i++)
+                for (int i = 0; i < Flyenemies.flyEnemiesPictureBoxes.Count; i++)
                 {
-                    if (Flyenemies.flyEnemiespictureBoxes[i].Bounds.IntersectsWith(ufo.Bounds))
+                    if (Flyenemies.flyEnemiesPictureBoxes[i].Bounds.IntersectsWith(ufo.Bounds))
                     {
                         player.ufo.Health -= 20;
-                        Flyenemies.flyEnemiespictureBoxes[i].Dispose();
-                        Flyenemies.flyEnemiespictureBoxes.RemoveAt(i);
+                        Flyenemies.flyEnemiesPictureBoxes[i].Dispose();
+                        Flyenemies.flyEnemiesPictureBoxes.RemoveAt(i);
                         Flyenemies.flyEnemies.RemoveAt(i);
                     }
                 }
                 //(player projectiles, fly enemy)
                 for (int i = 0; i < player.projectilepictureBoxes.Count; i++)
                 {
-                    for (int j = 0; j < Flyenemies.flyEnemies.Count-1; j++)
+                    for (int j = 0; j < Flyenemies.flyEnemies.Count; j++)
                     {
-                        if (player.projectilepictureBoxes[i].Bounds.IntersectsWith(Flyenemies.flyEnemiespictureBoxes[j].Bounds))
+                        if (player.projectilepictureBoxes[i].Bounds.IntersectsWith(Flyenemies.flyEnemiesPictureBoxes[j].Bounds))
                         {
                             Flyenemies.flyEnemies[j].Health -= player.projectiles[i].Damage;
+                            ScoreLabel.Text = "Score : " + (Score += 50).ToString();
 
                             if (Flyenemies.flyEnemies[j].Health <= 0)
                             {
-                                Flyenemies.flyEnemiespictureBoxes[j].Dispose();
-                                Flyenemies.flyEnemiespictureBoxes.RemoveAt(j);
+                                ScoreLabel.Text = "Score : " + (Score += 100).ToString();
+                                Flyenemies.flyEnemiesPictureBoxes[j].Dispose();
+                                Flyenemies.flyEnemiesPictureBoxes.RemoveAt(j);
                                 Flyenemies.flyEnemies.RemoveAt(j);
                             }
                             player.projectilepictureBoxes[i].Dispose();
@@ -207,9 +231,44 @@ namespace Arcade
                         }
                     }
                 }
+                //(player projectiles, ground enemy)
+                for (int i = 0; i < player.projectilepictureBoxes.Count; i++)
+                {
+                    for (int j = 0; j < GroundEnemies.groundEnemies.Count; j++)
+                    {
+                        if (player.projectilepictureBoxes[i].Bounds.IntersectsWith(GroundEnemies.groundEnemiesPictureBoxes[j].Bounds))
+                        {
+                            GroundEnemies.groundEnemies[j].Health -= player.projectiles[i].Damage;
+                            ScoreLabel.Text = "Score : " + (Score += 50).ToString();
+
+                            if (GroundEnemies.groundEnemies[j].Health <= 0)
+                            {
+                                ScoreLabel.Text = "Score : " + (Score += 100).ToString();
+                                GroundEnemies.groundEnemiesPictureBoxes[j].Dispose();
+                                GroundEnemies.groundEnemiesPictureBoxes.RemoveAt(j);
+                                GroundEnemies.groundEnemies.RemoveAt(j);
+                            }
+                            player.projectilepictureBoxes[i].Dispose();
+                            player.projectilepictureBoxes.RemoveAt(i);
+                            player.projectiles.RemoveAt(i);
+                            break;
+                        }
+                    }
+                }
+
+                //(ground enemy, ground)
+                for (int i = 0; i < GroundEnemies.groundEnemiesPictureBoxes.Count; i++)
+                {
+                    if (GroundEnemies.groundEnemiesPictureBoxes[i].Bounds.IntersectsWith(ground.Bounds))
+                    {
+                        GroundEnemies.groundEnemies[i].position.Y = ground.Location.Y- GroundEnemies.groundEnemiesPictureBoxes[i].Height;
+
+                    }
+                }
 
 
                 //update game objects
+                //player
                 player.ufo.Update(dt);
                 player.Fire();
                 if (player.ufo.Health < 0) HealthBar.Value = 0;
@@ -228,6 +287,19 @@ namespace Arcade
                     }
                     Flyenemies.flyEnemies[i].firerate += dt;
                 }
+                //ground enemies
+                for (int i = 0; i < GroundEnemies.groundEnemies.Count; i++)
+                {
+                    GroundEnemies.groundEnemies[i].TargetPos = player.ufo.position + player.ufo._size / 2;
+                    GroundEnemies.groundEnemies[i].Update(dt);
+                    if (GroundEnemies.groundEnemies[i].position.X >= 0 || GroundEnemies.groundEnemies[i].position.X < 800 + GroundEnemies.groundEnemiesPictureBoxes[i].Width)
+                    {
+                        GroundEnemies.groundEnemies[i].isFiring = true;
+                        GroundEnemies.groundEnemies[i].Fire(Enemyprojectile.projectiles, Enemyprojectile.projectilepictureBoxes);
+                    }
+                    GroundEnemies.groundEnemies[i].firerate += dt;
+                }
+
                 //all enemies projectile
                 for (int i = 0; i < Enemyprojectile.projectiles.Count; i++) Enemyprojectile.projectiles[i].Update(dt);
 
@@ -248,12 +320,19 @@ namespace Arcade
                 }
 
                 //fly enemy
-                for (int i = 0; i < Flyenemies.flyEnemiespictureBoxes.Count; i++)
+                for (int i = 0; i < Flyenemies.flyEnemiesPictureBoxes.Count; i++)
                 {
                     Flyenemies.flyEnemies[i].image = Properties.Resources.flight1;
-                    Flyenemies.flyEnemies[i].Draw(Flyenemies.flyEnemiespictureBoxes[i]);
-                    this.Controls.Add(Flyenemies.flyEnemiespictureBoxes[i]);
+                    Flyenemies.flyEnemies[i].Draw(Flyenemies.flyEnemiesPictureBoxes[i]);
+                    this.Controls.Add(Flyenemies.flyEnemiesPictureBoxes[i]);
+                }
 
+                //ground enemy
+                for (int i = 0; i < GroundEnemies.groundEnemiesPictureBoxes.Count; i++)
+                {
+                    GroundEnemies.groundEnemies[i].image = Properties.Resources.soldier;
+                    GroundEnemies.groundEnemies[i].Draw(GroundEnemies.groundEnemiesPictureBoxes[i]);
+                    this.Controls.Add(GroundEnemies.groundEnemiesPictureBoxes[i]);
                 }
 
                 //all enemies projectiles
@@ -263,15 +342,12 @@ namespace Arcade
                     this.Controls.Add(Enemyprojectile.projectilepictureBoxes[i]);
                 }
 
-
-                //clean screen
+                //vsync?
                 Invalidate();
 
                 //test
             }
 
-            //cooldown for cpu
-            System.Threading.Thread.Sleep(1);
         }
 
 

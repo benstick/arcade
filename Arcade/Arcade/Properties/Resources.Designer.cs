@@ -71,7 +71,6 @@ namespace Arcade.Properties {
         }
         
         /// <summary>
-
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap explosion {
@@ -82,7 +81,6 @@ namespace Arcade.Properties {
         }
         
         /// <summary>
-
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap flight1 {
@@ -133,21 +131,21 @@ namespace Arcade.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream laser_sound {
-            get {
-                return ResourceManager.GetStream("laser_sound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap ground {
             get {
                 object obj = ResourceManager.GetObject("ground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream laser_sound {
+            get {
+                return ResourceManager.GetStream("laser_sound", resourceCulture);
             }
         }
         
@@ -187,6 +185,16 @@ namespace Arcade.Properties {
         internal static System.Drawing.Bitmap reticle {
             get {
                 object obj = ResourceManager.GetObject("reticle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap soldier {
+            get {
+                object obj = ResourceManager.GetObject("soldier", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -251,7 +259,6 @@ namespace Arcade.Properties {
         }
         
         /// <summary>
-
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap ufo1 {
@@ -272,7 +279,6 @@ namespace Arcade.Properties {
         }
         
         /// <summary>
-
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] ufopsd {
