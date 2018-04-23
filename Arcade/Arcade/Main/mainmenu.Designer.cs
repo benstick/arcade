@@ -41,6 +41,7 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.UserFocusCheck = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DuckhuntDemo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FlappyCopterDemo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SankeDemo)).BeginInit();
@@ -83,7 +84,7 @@
             this.DuckhuntDemo.BackColor = System.Drawing.SystemColors.ControlDark;
             this.DuckhuntDemo.Enabled = false;
             this.DuckhuntDemo.Image = global::Arcade.Properties.Resources.SpaceHuntDemoIntroSS;
-            this.DuckhuntDemo.Location = new System.Drawing.Point(115, 121);
+            this.DuckhuntDemo.Location = new System.Drawing.Point(138, 65);
             this.DuckhuntDemo.Name = "DuckhuntDemo";
             this.DuckhuntDemo.Size = new System.Drawing.Size(150, 100);
             this.DuckhuntDemo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -97,7 +98,7 @@
             this.FlappyCopterDemo.BackColor = System.Drawing.SystemColors.ControlDark;
             this.FlappyCopterDemo.Enabled = false;
             this.FlappyCopterDemo.Image = global::Arcade.Properties.Resources.FlappyCopterDemoSS;
-            this.FlappyCopterDemo.Location = new System.Drawing.Point(491, 121);
+            this.FlappyCopterDemo.Location = new System.Drawing.Point(500, 65);
             this.FlappyCopterDemo.Name = "FlappyCopterDemo";
             this.FlappyCopterDemo.Size = new System.Drawing.Size(150, 100);
             this.FlappyCopterDemo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -123,7 +124,7 @@
             this.NoNameDemo.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.NoNameDemo.Enabled = false;
             this.NoNameDemo.Image = global::Arcade.Properties.Resources.NoNameDemoSS;
-            this.NoNameDemo.Location = new System.Drawing.Point(491, 296);
+            this.NoNameDemo.Location = new System.Drawing.Point(500, 259);
             this.NoNameDemo.Margin = new System.Windows.Forms.Padding(2);
             this.NoNameDemo.Name = "NoNameDemo";
             this.NoNameDemo.Size = new System.Drawing.Size(150, 100);
@@ -171,6 +172,10 @@
             this.toolStripButton3.Text = "Restart";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
+            // UserFocusCheck
+            // 
+            this.UserFocusCheck.Tick += new System.EventHandler(this.UserFocusCheck_Tick);
+            // 
             // mainmenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,5 +219,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.Timer UserFocusCheck;
     }
 }

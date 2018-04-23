@@ -273,6 +273,15 @@
   <ItemGroup>
     <None Include="Resources\NoNameDemoSS.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spacehunt 4_23_2018 7_00_20 PM.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NoNameDemoGif.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlappyCopterDemoGif.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

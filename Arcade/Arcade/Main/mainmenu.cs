@@ -12,6 +12,10 @@ namespace Arcade
 {
     public partial class mainmenu : Form
     {
+        bool focusOnPB = true;
+        bool spacehuntfocus = false;
+        bool flappycopterfocus = false;
+        bool nonamefocus = false;
         public mainmenu()
         {
             InitializeComponent();
@@ -22,6 +26,7 @@ namespace Arcade
             this.Opacity = 1.0;
             FadeinTimer.Start();
             DuckhuntDemo.Enabled = false;
+            UserFocusCheck.Start();
         }
 
         //fade in intro screen timer
@@ -38,6 +43,50 @@ namespace Arcade
                 ExitLabel.Visible = true;
                 FadeinTimer.Stop();
             }
+        }
+
+        private void UserFocusCheck_Tick(object sender, EventArgs e)
+        {
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.Size = new Size(1, 1);
+            pictureBox.Location = this.PointToClient(MousePosition);
+            pictureBox.Visible = false;
+            this.Controls.Add(pictureBox);
+            if (pictureBox.Bounds.IntersectsWith(DuckhuntDemo.Bounds))
+            {
+                DuckhuntDemo.Focus();
+                if (DuckhuntDemo.Focus() == true&&focusOnPB==true)
+                {
+                    DuckhuntDemo.Size = new Size(200, 200);
+                    DuckhuntDemo.Image = Properties.Resources.SpacehuntDemoGif;
+                    focusOnPB = false;
+                }
+
+            }
+            else if(pictureBox.Bounds.IntersectsWith(FlappyCopterDemo.Bounds))
+            {
+                FlappyCopterDemo.Size = new Size(200, 200);
+                FlappyCopterDemo.Image = Properties.Resources.FlappyCopterDemoGif;
+                focusOnPB = false;
+            }
+            else if(pictureBox.Bounds.IntersectsWith(NoNameDemo.Bounds))
+            {
+                NoNameDemo.Size = new Size(200, 200);
+                NoNameDemo.Image = Properties.Resources.NoNameDemoGif;
+                focusOnPB = false;
+            }
+            else
+            {
+                focusOnPB = true;
+                DuckhuntDemo.Size = new Size(150, 100);
+                DuckhuntDemo.Image = Properties.Resources.SpaceHuntDemoIntroSS;
+                FlappyCopterDemo.Size = new Size(150, 100);
+                FlappyCopterDemo.Image = Properties.Resources.FlappyCopterDemoSS;
+                NoNameDemo.Size = new Size(150, 100);
+                NoNameDemo.Image = Properties.Resources.NoNameDemoSS;
+            }
+
+
 
         }
 
@@ -146,6 +195,7 @@ namespace Arcade
         {
             Application.Exit();
         }
+
 
     }
 }
