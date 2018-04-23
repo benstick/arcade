@@ -37,9 +37,18 @@ namespace Arcade
         GroundEnemy GroundEnemies = new GroundEnemy();
         uint groundenemiesNumber;
 
+        //exit form check
+        public bool exit = false;
+
         public NoName()
         {
             InitializeComponent();
+        }
+
+        void HowToPlay(Timer timer)
+        {
+            DialogResult dr = MessageBox.Show("Move : WASD\nShoot: left click\nClick \"OK\" to start", "How to play", MessageBoxButtons.OK);
+            if (dr == DialogResult.OK) timer.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -60,16 +69,17 @@ namespace Arcade
             Walls.Add(ground);
 
             //setup fly enemies;
-            flyenemiesNumber = 5;
+            flyenemiesNumber = 10;
 
             //setup ground enemies
-            groundenemiesNumber = 5;
+            groundenemiesNumber = 10;
 
-            //game timer start
+            //setup timer start
             GameloopTimer.Interval = (int)TargetElapsedTime.TotalMilliseconds;
             GameloopTimer.Tick += Tick;
-            GameloopTimer.Start();
 
+           //tell player how to play in messagebox then start if player clicks "OK"
+            HowToPlay(GameloopTimer);
         }
 
         //frame rate control
@@ -117,7 +127,7 @@ namespace Arcade
                 {
                     Flyenemies.position = new Vector2((float)random.Next(0, 800), -60.0f);
                     Flyenemies.TargetPos = player.ufo.position + player.ufo._size / 2;
-                    Flyenemies.accelAmount = 20.0f;
+                    Flyenemies.accelAmount = 50.0f;
                     Flyenemies.Health = 100;
                     Flyenemies.image = Properties.Resources.flight1;
                     Flyenemies.CreateEnemy();
@@ -138,6 +148,7 @@ namespace Arcade
                 }
 
                 //game control
+                this.KeyDown += ExitForm;
                 this.KeyDown += player.KeyBoard_KeyDown;
                 this.KeyUp += player.KeyBoard_KeyUp;
                 this.MouseDown += player.MouseButton_Down;
@@ -350,6 +361,10 @@ namespace Arcade
 
         }
 
+        void ExitForm(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) this.Close();
+        }
 
     }
 }

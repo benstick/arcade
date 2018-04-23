@@ -58,6 +58,9 @@ class Vector2dObject
         facingVector.X = Math.Cos(radiansPerDegree * (facingDegrees)).ToFloat();
         facingVector.Y = Math.Sin(radiansPerDegree * (facingDegrees)).ToFloat();
 
+        //implement grvaity
+        velocity.Y += gravity;
+
         ///update the velocity if the car is accelerating
         if (isAccelerating)
         {
@@ -76,8 +79,7 @@ class Vector2dObject
         //slidingSpeed *= 0.9f;
         //velocity += slidingSpeed * slidingDirection;
 
-        //implement grvaity
-        velocity.Y += gravity;
+
 
         //update the position
         position += velocity;
