@@ -14,6 +14,7 @@ class Vector2dObject
     public List<PictureBox> projectilepictureBoxes = new List<PictureBox>();
 
     public Vector2 position;
+    public Vector2 TargetPos;
     public Vector2 velocity;
     public Vector2 facingVector;
     public Vector2 _size;
@@ -21,10 +22,12 @@ class Vector2dObject
     public float facingDegrees;
     public float TargetRadians;
     public float accelAmount;
-    public float maxSpeed;
+    public float firerate;
+
     public int Health;
     public Image image;
 
+    public bool isFiring;
     public bool isAccelerating;
     public bool isTurnningLeft;
     public bool isTurnningRight;
@@ -33,7 +36,6 @@ class Vector2dObject
     {
         facingDegrees = 0.0f;
         isAccelerating = false;
-        maxSpeed = 0.0f;
         velocity = new Vector2(0.0f, 0.0f);
         gravity = 0.02f;
         Health = 0;
@@ -94,7 +96,6 @@ class Vector2dObject
         }
         RotateImage(pictureBox, image, facingDegrees);
         pictureBox.Location = new Point((int)position.X, (int)position.Y);
-
     }
 
     public void RotateImage(PictureBox pictureBox, Image _image, float angle)

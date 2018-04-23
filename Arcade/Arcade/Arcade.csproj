@@ -87,6 +87,7 @@
       <DependentUpon>mainmenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\Program.cs" />
+    <Compile Include="Mitchell\GroundEnemy.cs" />
     <Compile Include="Mitchell\NoName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,7 +188,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\spacehunt_music.wav" />
-
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ufo.png" />
@@ -209,7 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ufo1.png" />
-
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\soldier.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

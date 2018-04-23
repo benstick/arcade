@@ -29,67 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ground = new System.Windows.Forms.PictureBox();
-            this.ufo = new System.Windows.Forms.PictureBox();
             this.GameloopTimer = new System.Windows.Forms.Timer(this.components);
-            this.WallTop = new System.Windows.Forms.PictureBox();
-            this.WallLeft = new System.Windows.Forms.PictureBox();
-            this.WallRight = new System.Windows.Forms.PictureBox();
             this.HealthBar = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
+            this.WallRight = new System.Windows.Forms.PictureBox();
+            this.WallLeft = new System.Windows.Forms.PictureBox();
+            this.WallTop = new System.Windows.Forms.PictureBox();
+            this.ground = new System.Windows.Forms.PictureBox();
+            this.ufo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.WallRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WallLeft)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WallTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ufo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WallTop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WallLeft)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WallRight)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ground
-            // 
-            this.ground.Image = global::Arcade.Properties.Resources.ground;
-            this.ground.Location = new System.Drawing.Point(-140, 515);
-            this.ground.Name = "ground";
-            this.ground.Size = new System.Drawing.Size(1000, 50);
-            this.ground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ground.TabIndex = 1;
-            this.ground.TabStop = false;
-            // 
-            // ufo
-            // 
-            this.ufo.Image = global::Arcade.Properties.Resources.ufo1;
-            this.ufo.Location = new System.Drawing.Point(352, 15);
-            this.ufo.Name = "ufo";
-            this.ufo.Size = new System.Drawing.Size(50, 50);
-            this.ufo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ufo.TabIndex = 0;
-            this.ufo.TabStop = false;
-            // 
-            // WallTop
-            // 
-            this.WallTop.Location = new System.Drawing.Point(-7, -1);
-            this.WallTop.Name = "WallTop";
-            this.WallTop.Size = new System.Drawing.Size(800, 10);
-            this.WallTop.TabIndex = 2;
-            this.WallTop.TabStop = false;
-            this.WallTop.Visible = false;
-            // 
-            // WallLeft
-            // 
-            this.WallLeft.Location = new System.Drawing.Point(-8, -1);
-            this.WallLeft.Name = "WallLeft";
-            this.WallLeft.Size = new System.Drawing.Size(10, 566);
-            this.WallLeft.TabIndex = 3;
-            this.WallLeft.TabStop = false;
-            this.WallLeft.Visible = false;
-            // 
-            // WallRight
-            // 
-            this.WallRight.Location = new System.Drawing.Point(783, -1);
-            this.WallRight.Name = "WallRight";
-            this.WallRight.Size = new System.Drawing.Size(10, 566);
-            this.WallRight.TabIndex = 4;
-            this.WallRight.TabStop = false;
-            this.WallRight.Visible = false;
             // 
             // HealthBar
             // 
@@ -111,6 +64,53 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Health";
             // 
+            // WallRight
+            // 
+            this.WallRight.Location = new System.Drawing.Point(783, -1);
+            this.WallRight.Name = "WallRight";
+            this.WallRight.Size = new System.Drawing.Size(10, 566);
+            this.WallRight.TabIndex = 4;
+            this.WallRight.TabStop = false;
+            this.WallRight.Visible = false;
+            // 
+            // WallLeft
+            // 
+            this.WallLeft.Location = new System.Drawing.Point(-8, -1);
+            this.WallLeft.Name = "WallLeft";
+            this.WallLeft.Size = new System.Drawing.Size(10, 566);
+            this.WallLeft.TabIndex = 3;
+            this.WallLeft.TabStop = false;
+            this.WallLeft.Visible = false;
+            // 
+            // WallTop
+            // 
+            this.WallTop.Location = new System.Drawing.Point(-7, -1);
+            this.WallTop.Name = "WallTop";
+            this.WallTop.Size = new System.Drawing.Size(800, 10);
+            this.WallTop.TabIndex = 2;
+            this.WallTop.TabStop = false;
+            this.WallTop.Visible = false;
+            // 
+            // ground
+            // 
+            this.ground.Image = global::Arcade.Properties.Resources.ground;
+            this.ground.Location = new System.Drawing.Point(-122, 515);
+            this.ground.Name = "ground";
+            this.ground.Size = new System.Drawing.Size(1000, 50);
+            this.ground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ground.TabIndex = 1;
+            this.ground.TabStop = false;
+            // 
+            // ufo
+            // 
+            this.ufo.Image = global::Arcade.Properties.Resources.ufo1;
+            this.ufo.Location = new System.Drawing.Point(352, 15);
+            this.ufo.Name = "ufo";
+            this.ufo.Size = new System.Drawing.Size(50, 50);
+            this.ufo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ufo.TabIndex = 0;
+            this.ufo.TabStop = false;
+            // 
             // NoName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,11 +128,11 @@
             this.Name = "NoName";
             this.Text = "Game";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.WallRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WallLeft)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WallTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ufo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WallTop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WallLeft)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WallRight)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -3,31 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 using System.Windows.Forms;
 using System.Drawing;
-using System.Numerics;
 
 
-class FlyEnemy : Vector2dObject
+class GroundEnemy:Vector2dObject
 {
-    public List<FlyEnemy> flyEnemies = new List<FlyEnemy>();
-    public List<PictureBox> flyEnemiesPictureBoxes = new List<PictureBox>();
+    public List<GroundEnemy> groundEnemies = new List<GroundEnemy>();
+    public List<PictureBox> groundEnemiesPictureBoxes = new List<PictureBox>();
 
-
-
-
-
-
-    public FlyEnemy()
+    public GroundEnemy()
     {
-        facingDegrees = 0.0f;
+        facingDegrees = 90.0f;
         isAccelerating = false;
         velocity = new Vector2(0.0f, 0.0f);
         gravity = 0.0f;
         Health = 0;
     }
 
-    public FlyEnemy(Vector2 _objectPos, Vector2 _targetPos, float initialSpeed, Image _Image, int health)
+    public GroundEnemy(Vector2 _objectPos, Vector2 _targetPos, float initialSpeed, Image _Image, int health)
     {
         position = _objectPos;
         TargetRadians = (float)Math.Atan2(_objectPos.Y - _targetPos.Y, _objectPos.X - _targetPos.X);
@@ -39,16 +34,18 @@ class FlyEnemy : Vector2dObject
 
     public void CreateEnemy()
     {
-        flyEnemies.Add(new FlyEnemy(position, TargetPos, accelAmount, image, Health));
-        flyEnemiesPictureBoxes.Add(new PictureBox());
+        groundEnemies.Add(new GroundEnemy(position, TargetPos, accelAmount, image, Health));
+        groundEnemiesPictureBoxes.Add(new PictureBox());
     }
 
     public override void Update(float dt)
     {
+
         TargetRadians = (float)Math.Atan2(position.Y - TargetPos.Y, position.X - TargetPos.X);
-        facingDegrees = TargetRadians * (180.0f / Math.PI.ToFloat()) - 180.0f;
+
+        
         facingVector.X = Math.Cos(TargetRadians).ToFloat();
-        facingVector.Y = Math.Sin(TargetRadians).ToFloat();
+        //facingVector.Y = Math.Sin(TargetRadians).ToFloat();
 
         ///update the velocity if the car is accelerating
         if (isAccelerating)
@@ -56,7 +53,7 @@ class FlyEnemy : Vector2dObject
 
             Vector2 acceleration = facingVector * accelAmount;
             //if (velocity.Magnitude <= maxSpeed)//set max speed
-            velocity = (acceleration * dt);
+            velocity.X = (acceleration.X * dt);
 
         }
         //update the position
@@ -79,6 +76,5 @@ class FlyEnemy : Vector2dObject
             firerate = 0;
         }
     }
-
 }
 
