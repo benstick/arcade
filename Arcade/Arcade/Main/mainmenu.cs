@@ -65,15 +65,23 @@ namespace Arcade
             }
             else if(pictureBox.Bounds.IntersectsWith(FlappyCopterDemo.Bounds))
             {
-                FlappyCopterDemo.Size = new Size(200, 200);
-                FlappyCopterDemo.Image = Properties.Resources.FlappyCopterDemoGif;
-                focusOnPB = false;
+                FlappyCopterDemo.Focus();
+                if (FlappyCopterDemo.Focus() == true && focusOnPB == true)
+                {
+                    FlappyCopterDemo.Size = new Size(200, 200);
+                    FlappyCopterDemo.Image = Properties.Resources.FlappyCopterDemoGif;
+                    focusOnPB = false;
+                }
             }
             else if(pictureBox.Bounds.IntersectsWith(NoNameDemo.Bounds))
             {
-                NoNameDemo.Size = new Size(200, 200);
-                NoNameDemo.Image = Properties.Resources.NoNameDemoGif;
-                focusOnPB = false;
+                NoNameDemo.Focus();
+                if (NoNameDemo.Focus() == true && focusOnPB == true)
+                {
+                    NoNameDemo.Size = new Size(200, 200);
+                    NoNameDemo.Image = Properties.Resources.NoNameDemoGif;
+                    focusOnPB = false;
+                }
             }
             else
             {
