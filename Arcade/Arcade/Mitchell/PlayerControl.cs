@@ -67,7 +67,7 @@ class PlayerControl
             projectiles.Add(new Projectile(
                 ufo.position + (ufo._size / 2.0f),
                 PointToVector2d(MousePosition),
-                1000f,
+                2000f,
                 Arcade.Properties.Resources.projectile1,
                 50)
                 );

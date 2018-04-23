@@ -21,8 +21,9 @@ namespace Arcade
         //add player
         PlayerControl player = new PlayerControl();
 
-        //add Score
+        //add stat
         int Score=0;
+        float FPS = 0;
 
         //add walls
         List<PictureBox> Walls = new List<PictureBox>();
@@ -75,9 +76,10 @@ namespace Arcade
             //setup ground enemies
             groundenemiesNumber = 10;
 
-            //setup timer start
+            //setup timer
             GameloopTimer.Interval = (int)TargetElapsedTime.TotalMilliseconds;
             GameloopTimer.Tick += Tick;
+            FPSTimer.Start();
 
            //tell player how to play in messagebox then start if player clicks "OK"
             HowToPlay(GameloopTimer);
@@ -142,8 +144,8 @@ namespace Arcade
                     else if(rand<500) GroundEnemies.position = new Vector2(ground.Location.X+random.Next(0,200), ground.Location.Y);
 
                     GroundEnemies.TargetPos = player.ufo.position + player.ufo._size / 2;
-                    GroundEnemies.accelAmount = 20.0f;
-                    GroundEnemies.Health = 100;
+                    GroundEnemies.accelAmount = 30.0f;
+                    GroundEnemies.Health = 50;
                     GroundEnemies.image = Properties.Resources.soldier;
                     GroundEnemies.CreateEnemy();
                 }
@@ -357,6 +359,10 @@ namespace Arcade
                 //vsync?
                 Invalidate();
 
+                //cooldown for cpu
+                System.Threading.Thread.Sleep(1);
+                FPS += dt;
+
                 //test
             }
 
@@ -367,6 +373,11 @@ namespace Arcade
             if (e.KeyCode == Keys.Escape) this.Close();
         }
 
+        private void FPSTimer_Tick(object sender, EventArgs e)
+        {
+            FPSLabel.Text = "FPS : " + Math.Round(FPS*100.0f, 3).ToString();
+            FPS = 0.0f;
+        }
     }
 }
 
