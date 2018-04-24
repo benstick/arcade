@@ -10,7 +10,8 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Numerics;
 using System.Collections;
-
+using System.Media;
+using System.IO;
 
 namespace Arcade
 {
@@ -43,6 +44,9 @@ namespace Arcade
         //form check
         bool Intro = true;
         public bool exit = false;
+
+        //sound player
+        private SoundPlayer sndPlayer = null;
 
         public NoName()
         {
@@ -89,6 +93,34 @@ namespace Arcade
             GameloopTimer.Start();
             FPSTimer.Start();
 
+            //setup background music
+            playAudio(Properties.Resources.NoNameBackgroundMusic, true);
+
+        }
+
+        private void playAudio(Stream stream, bool playOnLoop)
+        {
+            if (sndPlayer != null)
+            {
+                sndPlayer.Stop();
+                sndPlayer.Dispose();
+                sndPlayer = null;
+            }
+
+            if (stream == null) return;
+
+            sndPlayer = new SoundPlayer(stream);
+
+            if (playOnLoop)
+            {
+                sndPlayer.Dispose();
+                sndPlayer.PlayLooping();
+            }
+            else
+            {
+                sndPlayer.Dispose();
+                sndPlayer.Play();
+            }
         }
 
         //frame rate control
@@ -388,6 +420,7 @@ namespace Arcade
 
         private void NoName_FormClosing(object sender, FormClosingEventArgs e)
         {
+            sndPlayer.Stop();
             Form form = Application.OpenForms["MainMenu"];
             form.WindowState = FormWindowState.Normal;
             form.Activate();
