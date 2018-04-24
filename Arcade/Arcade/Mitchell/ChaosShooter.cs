@@ -406,7 +406,7 @@ namespace Arcade
                 }
 
                 //end of the game
-                Lose(GameloopTimer);
+                if(HealthBarFrontColor.Width<=0) Lose(GameloopTimer);
 
                 //vsync?
                 Invalidate();
