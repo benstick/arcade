@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Media;
 
 namespace Arcade
 {
@@ -16,6 +18,9 @@ namespace Arcade
         int gravity = 5;
         int Score = 0;
         List<PictureBox> Obstacle = new List<PictureBox>();
+
+        //sound player
+        private SoundPlayer sndPlayer = null;
 
         bool jumping = false;
 
@@ -36,6 +41,31 @@ namespace Arcade
             Obstacle.Add(MiddleObstacle2);
             Obstacle.Add(SkyBounds);
             Obstacle.Add(Ground);
+        }
+
+        private void playAudio(Stream stream, bool playOnLoop)
+        {
+            if (sndPlayer != null)
+            {
+                sndPlayer.Stop();
+                sndPlayer.Dispose();
+                sndPlayer = null;
+            }
+
+            if (stream == null) return;
+
+            sndPlayer = new SoundPlayer(stream);
+
+            if (playOnLoop)
+            {
+                sndPlayer.Dispose();
+                sndPlayer.PlayLooping();
+            }
+            else
+            {
+                sndPlayer.Dispose();
+                sndPlayer.Play();
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -100,8 +130,6 @@ namespace Arcade
                 this.Close();
             }
 
-
-
         }
          void reset()
         {
@@ -160,10 +188,16 @@ namespace Arcade
 
         private void FlappyCopter_FormClosing(object sender, FormClosingEventArgs e)
         {
+            sndPlayer.Stop();
             Form form = Application.OpenForms["MainMenu"];
             form.WindowState = FormWindowState.Normal;
             form.Activate();
         }
 
+        private void FlappyCopter_Load(object sender, EventArgs e)
+        {
+            //setup background music
+            playAudio(Properties.Resources.NoNameBackgroundMusic, true);
+        }
     }
 }

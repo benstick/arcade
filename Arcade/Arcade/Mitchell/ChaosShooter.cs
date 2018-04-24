@@ -64,6 +64,16 @@ namespace Arcade
             }
         }
 
+        void Lose(Timer timer)
+        {
+            timer.Stop();
+            DialogResult dr = MessageBox.Show("Final Score : " +Score , "No Health!", MessageBoxButtons.OK);
+            if (dr == DialogResult.OK)
+            {
+                //
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -394,6 +404,9 @@ namespace Arcade
                     Enemyprojectile.projectiles[i].Draw(Enemyprojectile.projectilepictureBoxes[i]);
                     this.Controls.Add(Enemyprojectile.projectilepictureBoxes[i]);
                 }
+
+                //end of the game
+                Lose(GameloopTimer);
 
                 //vsync?
                 Invalidate();
