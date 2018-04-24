@@ -29,7 +29,7 @@ namespace Arcade
         private int currentRound = 1;
         private int score = 0;
         private int speed = 3; //default 3 for starting speed
-        private int numOfUfos = 20;
+        private int numOfUfos = 2;
 
         //Runs when game is loaded up
         private void Duckhunt_Load(object sender, EventArgs e)
