@@ -182,6 +182,7 @@
             this.Name = "FlappyCopter";
             this.Text = "FlappyCopter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FlappyCopter_FormClosing);
+            this.Load += new System.EventHandler(this.FlappyCopter_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Down);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterKeyPressed);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Up);
