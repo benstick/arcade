@@ -13,9 +13,7 @@ namespace Arcade
     public partial class mainmenu : Form
     {
         bool focusOnPB = true;
-        bool spacehuntfocus = false;
-        bool flappycopterfocus = false;
-        bool nonamefocus = false;
+
         public mainmenu()
         {
             InitializeComponent();
