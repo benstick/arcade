@@ -117,17 +117,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ben\Duckhunt.cs">
+    <Compile Include="Ben\SpaceHunt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ben\Duckhunt.Designer.cs">
-      <DependentUpon>Duckhunt.cs</DependentUpon>
+    <Compile Include="Ben\SpaceHunt.Designer.cs">
+      <DependentUpon>SpaceHunt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cam\FlappyCopter.cs">
+    <Compile Include="Cam\SpaceEvader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cam\FlappyCopter.Designer.cs">
-      <DependentUpon>FlappyCopter.cs</DependentUpon>
+    <Compile Include="Cam\SpaceEvader.Designer.cs">
+      <DependentUpon>SpaceEvader.cs</DependentUpon>
     </Compile>
     <Compile Include="Mitchell\FlyEnemy.cs" />
     <Compile Include="Main\mainmenu.cs">
@@ -138,28 +138,28 @@
     </Compile>
     <Compile Include="Main\Program.cs" />
     <Compile Include="Mitchell\GroundEnemy.cs" />
-    <Compile Include="Mitchell\NoName.cs">
+    <Compile Include="Mitchell\ChaosShooter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mitchell\NoName.Designer.cs">
-      <DependentUpon>NoName.cs</DependentUpon>
+    <Compile Include="Mitchell\ChaosShooter.Designer.cs">
+      <DependentUpon>ChaosShooter.cs</DependentUpon>
     </Compile>
     <Compile Include="Mitchell\PlayerControl.cs" />
     <Compile Include="Mitchell\Projectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Mitchell\Utilities.cs" />
     <Compile Include="Mitchell\Vector2dObject.cs" />
-    <EmbeddedResource Include="Cam\FlappyCopter.resx">
-      <DependentUpon>FlappyCopter.cs</DependentUpon>
+    <EmbeddedResource Include="Cam\SpaceEvader.resx">
+      <DependentUpon>SpaceEvader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ben\Duckhunt.resx">
-      <DependentUpon>Duckhunt.cs</DependentUpon>
+    <EmbeddedResource Include="Ben\SpaceHunt.resx">
+      <DependentUpon>SpaceHunt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\mainmenu.resx">
       <DependentUpon>mainmenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mitchell\NoName.resx">
-      <DependentUpon>NoName.cs</DependentUpon>
+    <EmbeddedResource Include="Mitchell\ChaosShooter.resx">
+      <DependentUpon>ChaosShooter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

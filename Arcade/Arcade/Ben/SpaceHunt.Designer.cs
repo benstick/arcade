@@ -118,7 +118,7 @@
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.welcomeLogo);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Duckhunt";
             this.Text = "Spacehunt";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Duckhunt_FormClosing);
