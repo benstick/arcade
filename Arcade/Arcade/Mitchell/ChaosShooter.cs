@@ -179,7 +179,7 @@ namespace Arcade
                 {
                     Flyenemies.position = new Vector2((float)random.Next(0, 800), -60.0f);
                     Flyenemies.TargetPos = player.ufo.position + player.ufo._size / 2;
-                    Flyenemies.accelAmount = 50.0f;
+                    Flyenemies.accelAmount = 80.0f;
                     Flyenemies.Health = 100;
                     Flyenemies.image = Properties.Resources.flight1;
                     Flyenemies.CreateEnemy();
@@ -193,7 +193,7 @@ namespace Arcade
                     else if(rand<500) GroundEnemies.position = new Vector2(ground.Location.X+random.Next(0,200), ground.Location.Y);
 
                     GroundEnemies.TargetPos = player.ufo.position + player.ufo._size / 2;
-                    GroundEnemies.accelAmount = 30.0f;
+                    GroundEnemies.accelAmount = 100.0f;
                     GroundEnemies.Health = 50;
                     GroundEnemies.image = Properties.Resources.soldier;
                     GroundEnemies.CreateEnemy();
