@@ -4,7 +4,7 @@ arcade is an arcade game set in the 1980's. It uses a "vaporwave" theme for it's
 
 ## tools
 
-built in Windows Forms and Unity.
+built in Windows Forms using C#.
 
 ## members
 [Cam Schleicher](https://github.com/camschleicher), [Darren Ramirez](https://github.com/DarrenRamirez), [Mitchell Lam](https://github.com/Mitchell7583), [Ben Stickney](https://github.com/benstick)
