@@ -244,5 +244,8 @@
   <ItemGroup>
     <None Include="Resources\SpaceHuntBackgroundMusic.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Darren\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

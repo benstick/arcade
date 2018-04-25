@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Arcade
 {
@@ -21,7 +22,7 @@ namespace Arcade
 
         private void mainmenu_Load(object sender, EventArgs e)
         {
-            this.Opacity = 1.0;
+            this.Opacity = 0.1;
             FadeinTimer.Start();
             DuckhuntDemo.Enabled = false;
             UserFocusCheck.Start();
@@ -102,7 +103,7 @@ namespace Arcade
             if (this.Opacity == 1.0)
             {
                 this.Opacity = 1.01;
-                BackgroundImage = null;//remove intro background
+                //BackgroundImage = null;//remove intro background
                 //enable and visable buttons to games
                 DuckhuntDemo.Enabled = true;
                 DuckhuntDemo.Visible = true;
@@ -112,6 +113,9 @@ namespace Arcade
 
                 NoNameDemo.Enabled = true;
                 NoNameDemo.Visible = true;
+
+                SankeDemo.Enabled = true;
+                SankeDemo.Visible = true;
 
                 //disable labels of guide
                 label1.Visible = false;
@@ -184,6 +188,17 @@ namespace Arcade
                 this.WindowState = FormWindowState.Minimized;
                 noName.Activate();
             }
+        }
+
+        private void SankeDemo_Click(object sender, EventArgs e)
+        {
+            string path = Application.StartupPath;
+            //path= path.Substring(0, path.Length - 7);
+            path += "\\AA.exe";
+
+            Process.Start(path);
+            //MessageBox.Show(path);
+          
         }
 
         //tool bar

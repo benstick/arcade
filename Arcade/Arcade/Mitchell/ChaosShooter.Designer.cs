@@ -52,9 +52,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 12);
+            this.label1.Location = new System.Drawing.Point(11, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 16);
+            this.label1.Size = new System.Drawing.Size(58, 20);
             this.label1.TabIndex = 6;
             this.label1.Text = "Health";
             // 
@@ -62,51 +63,57 @@
             // 
             this.ScoreLabel.AutoSize = true;
             this.ScoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ScoreLabel.Location = new System.Drawing.Point(307, 15);
+            this.ScoreLabel.Location = new System.Drawing.Point(409, 18);
+            this.ScoreLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ScoreLabel.Name = "ScoreLabel";
-            this.ScoreLabel.Size = new System.Drawing.Size(81, 20);
+            this.ScoreLabel.Size = new System.Drawing.Size(100, 25);
             this.ScoreLabel.TabIndex = 7;
             this.ScoreLabel.Text = "Score : 0";
             // 
             // HealthBarBackColor
             // 
             this.HealthBarBackColor.BackColor = System.Drawing.Color.Red;
-            this.HealthBarBackColor.Location = new System.Drawing.Point(61, 15);
+            this.HealthBarBackColor.Location = new System.Drawing.Point(81, 18);
+            this.HealthBarBackColor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.HealthBarBackColor.Name = "HealthBarBackColor";
-            this.HealthBarBackColor.Size = new System.Drawing.Size(100, 15);
+            this.HealthBarBackColor.Size = new System.Drawing.Size(133, 18);
             this.HealthBarBackColor.TabIndex = 8;
             // 
             // HealthBarFrontColor
             // 
             this.HealthBarFrontColor.BackColor = System.Drawing.Color.Lime;
-            this.HealthBarFrontColor.Location = new System.Drawing.Point(61, 15);
+            this.HealthBarFrontColor.Location = new System.Drawing.Point(81, 18);
+            this.HealthBarFrontColor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.HealthBarFrontColor.Name = "HealthBarFrontColor";
-            this.HealthBarFrontColor.Size = new System.Drawing.Size(100, 15);
+            this.HealthBarFrontColor.Size = new System.Drawing.Size(133, 18);
             this.HealthBarFrontColor.TabIndex = 9;
             // 
             // WallRight
             // 
-            this.WallRight.Location = new System.Drawing.Point(783, -1);
+            this.WallRight.Location = new System.Drawing.Point(1044, -1);
+            this.WallRight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.WallRight.Name = "WallRight";
-            this.WallRight.Size = new System.Drawing.Size(10, 566);
+            this.WallRight.Size = new System.Drawing.Size(13, 697);
             this.WallRight.TabIndex = 4;
             this.WallRight.TabStop = false;
             this.WallRight.Visible = false;
             // 
             // WallLeft
             // 
-            this.WallLeft.Location = new System.Drawing.Point(-8, -1);
+            this.WallLeft.Location = new System.Drawing.Point(-11, -1);
+            this.WallLeft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.WallLeft.Name = "WallLeft";
-            this.WallLeft.Size = new System.Drawing.Size(10, 566);
+            this.WallLeft.Size = new System.Drawing.Size(13, 697);
             this.WallLeft.TabIndex = 3;
             this.WallLeft.TabStop = false;
             this.WallLeft.Visible = false;
             // 
             // WallTop
             // 
-            this.WallTop.Location = new System.Drawing.Point(-7, -1);
+            this.WallTop.Location = new System.Drawing.Point(-9, -1);
+            this.WallTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.WallTop.Name = "WallTop";
-            this.WallTop.Size = new System.Drawing.Size(800, 10);
+            this.WallTop.Size = new System.Drawing.Size(1067, 12);
             this.WallTop.TabIndex = 2;
             this.WallTop.TabStop = false;
             this.WallTop.Visible = false;
@@ -114,7 +121,8 @@
             // ground
             // 
             this.ground.Image = global::Arcade.Properties.Resources.ground;
-            this.ground.Location = new System.Drawing.Point(-309, 515);
+            this.ground.Location = new System.Drawing.Point(-168, 646);
+            this.ground.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ground.Name = "ground";
             this.ground.Size = new System.Drawing.Size(1400, 50);
             this.ground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -124,7 +132,8 @@
             // ufo
             // 
             this.ufo.Image = global::Arcade.Properties.Resources.ufo1;
-            this.ufo.Location = new System.Drawing.Point(311, 318);
+            this.ufo.Location = new System.Drawing.Point(415, 391);
+            this.ufo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ufo.Name = "ufo";
             this.ufo.Size = new System.Drawing.Size(50, 50);
             this.ufo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -135,9 +144,10 @@
             // 
             this.FPSLabel.AutoSize = true;
             this.FPSLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FPSLabel.Location = new System.Drawing.Point(684, 15);
+            this.FPSLabel.Location = new System.Drawing.Point(912, 18);
+            this.FPSLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FPSLabel.Name = "FPSLabel";
-            this.FPSLabel.Size = new System.Drawing.Size(49, 16);
+            this.FPSLabel.Size = new System.Drawing.Size(62, 20);
             this.FPSLabel.TabIndex = 10;
             this.FPSLabel.Text = "FPS : ";
             // 
@@ -148,10 +158,10 @@
             // 
             // NoName
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(1045, 690);
             this.Controls.Add(this.FPSLabel);
             this.Controls.Add(this.HealthBarFrontColor);
             this.Controls.Add(this.HealthBarBackColor);
@@ -163,6 +173,7 @@
             this.Controls.Add(this.ground);
             this.Controls.Add(this.ufo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "NoName";
             this.Text = "Game";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NoName_FormClosing);
