@@ -56,11 +56,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(286, 244);
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(381, 300);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(238, 29);
+            this.label1.Size = new System.Drawing.Size(299, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "Press any key to start";
             this.label1.Visible = false;
@@ -69,11 +71,13 @@
             // ExitLabel
             // 
             this.ExitLabel.AutoSize = true;
-            this.ExitLabel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ExitLabel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ExitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitLabel.Location = new System.Drawing.Point(286, 286);
+            this.ExitLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ExitLabel.Location = new System.Drawing.Point(381, 352);
+            this.ExitLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ExitLabel.Name = "ExitLabel";
-            this.ExitLabel.Size = new System.Drawing.Size(190, 29);
+            this.ExitLabel.Size = new System.Drawing.Size(236, 36);
             this.ExitLabel.TabIndex = 1;
             this.ExitLabel.Text = "Press Esc to exit";
             this.ExitLabel.Visible = false;
@@ -84,9 +88,10 @@
             this.DuckhuntDemo.BackColor = System.Drawing.SystemColors.ControlDark;
             this.DuckhuntDemo.Enabled = false;
             this.DuckhuntDemo.Image = global::Arcade.Properties.Resources.SpaceHuntDemoIntroSS;
-            this.DuckhuntDemo.Location = new System.Drawing.Point(138, 65);
+            this.DuckhuntDemo.Location = new System.Drawing.Point(184, 80);
+            this.DuckhuntDemo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DuckhuntDemo.Name = "DuckhuntDemo";
-            this.DuckhuntDemo.Size = new System.Drawing.Size(150, 100);
+            this.DuckhuntDemo.Size = new System.Drawing.Size(200, 123);
             this.DuckhuntDemo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DuckhuntDemo.TabIndex = 2;
             this.DuckhuntDemo.TabStop = false;
@@ -98,9 +103,10 @@
             this.FlappyCopterDemo.BackColor = System.Drawing.SystemColors.ControlDark;
             this.FlappyCopterDemo.Enabled = false;
             this.FlappyCopterDemo.Image = global::Arcade.Properties.Resources.FlappyCopterDemoSS;
-            this.FlappyCopterDemo.Location = new System.Drawing.Point(500, 65);
+            this.FlappyCopterDemo.Location = new System.Drawing.Point(667, 80);
+            this.FlappyCopterDemo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FlappyCopterDemo.Name = "FlappyCopterDemo";
-            this.FlappyCopterDemo.Size = new System.Drawing.Size(150, 100);
+            this.FlappyCopterDemo.Size = new System.Drawing.Size(200, 123);
             this.FlappyCopterDemo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.FlappyCopterDemo.TabIndex = 5;
             this.FlappyCopterDemo.TabStop = false;
@@ -109,25 +115,28 @@
             // 
             // SankeDemo
             // 
-            this.SankeDemo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.SankeDemo.BackColor = System.Drawing.SystemColors.Control;
             this.SankeDemo.Enabled = false;
-            this.SankeDemo.Location = new System.Drawing.Point(150, 318);
-            this.SankeDemo.Margin = new System.Windows.Forms.Padding(2);
+            this.SankeDemo.Image = ((System.Drawing.Image)(resources.GetObject("SankeDemo.Image")));
+            this.SankeDemo.Location = new System.Drawing.Point(195, 319);
+            this.SankeDemo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SankeDemo.Name = "SankeDemo";
-            this.SankeDemo.Size = new System.Drawing.Size(75, 41);
+            this.SankeDemo.Size = new System.Drawing.Size(150, 100);
+            this.SankeDemo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.SankeDemo.TabIndex = 10;
             this.SankeDemo.TabStop = false;
             this.SankeDemo.Visible = false;
+            this.SankeDemo.Click += new System.EventHandler(this.SankeDemo_Click);
             // 
             // NoNameDemo
             // 
             this.NoNameDemo.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.NoNameDemo.Enabled = false;
             this.NoNameDemo.Image = global::Arcade.Properties.Resources.NoNameDemoSS;
-            this.NoNameDemo.Location = new System.Drawing.Point(500, 259);
-            this.NoNameDemo.Margin = new System.Windows.Forms.Padding(2);
+            this.NoNameDemo.Location = new System.Drawing.Point(667, 319);
+            this.NoNameDemo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NoNameDemo.Name = "NoNameDemo";
-            this.NoNameDemo.Size = new System.Drawing.Size(150, 100);
+            this.NoNameDemo.Size = new System.Drawing.Size(200, 123);
             this.NoNameDemo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.NoNameDemo.TabIndex = 9;
             this.NoNameDemo.TabStop = false;
@@ -139,7 +148,7 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1067, 25);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -178,12 +187,12 @@
             // 
             // mainmenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImage = global::Arcade.Properties.Resources.introscreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.NoNameDemo);
             this.Controls.Add(this.SankeDemo);
@@ -191,7 +200,9 @@
             this.Controls.Add(this.DuckhuntDemo);
             this.Controls.Add(this.ExitLabel);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "mainmenu";
             this.Text = "MainMenu";
             this.Load += new System.EventHandler(this.mainmenu_Load);
