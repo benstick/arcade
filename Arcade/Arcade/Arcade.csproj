@@ -85,7 +85,7 @@
     <Compile Include="Cam\SpaceEvader.Designer.cs">
       <DependentUpon>SpaceEvader.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mitchell\FlyEnemy.cs" />
+    <Compile Include="Mitchell\ChaosShooter\FlyEnemy.cs" />
     <Compile Include="Main\mainmenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,18 +93,25 @@
       <DependentUpon>mainmenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\Program.cs" />
-    <Compile Include="Mitchell\GroundEnemy.cs" />
-    <Compile Include="Mitchell\ChaosShooter.cs">
+    <Compile Include="Mitchell\ChaosShooter\GroundEnemy.cs" />
+    <Compile Include="Mitchell\ChaosShooter\ChaosShooter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mitchell\ChaosShooter.Designer.cs">
+    <Compile Include="Mitchell\ChaosShooter\ChaosShooter.Designer.cs">
       <DependentUpon>ChaosShooter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mitchell\PlayerControl.cs" />
-    <Compile Include="Mitchell\Projectile.cs" />
+    <Compile Include="Mitchell\LocalScoreLeaderBoard\GetName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mitchell\LocalScoreLeaderBoard\GetName.Designer.cs">
+      <DependentUpon>GetName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mitchell\LocalScoreLeaderBoard\LocalScoreLeaderBoard.cs" />
+    <Compile Include="Mitchell\ChaosShooter\PlayerControl.cs" />
+    <Compile Include="Mitchell\ChaosShooter\Projectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mitchell\Utilities.cs" />
-    <Compile Include="Mitchell\Vector2dObject.cs" />
+    <Compile Include="Mitchell\ChaosShooter\Utilities.cs" />
+    <Compile Include="Mitchell\ChaosShooter\Vector2dObject.cs" />
     <EmbeddedResource Include="Cam\SpaceEvader.resx">
       <DependentUpon>SpaceEvader.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,8 +121,11 @@
     <EmbeddedResource Include="Main\mainmenu.resx">
       <DependentUpon>mainmenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mitchell\ChaosShooter.resx">
+    <EmbeddedResource Include="Mitchell\ChaosShooter\ChaosShooter.resx">
       <DependentUpon>ChaosShooter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mitchell\LocalScoreLeaderBoard\GetName.resx">
+      <DependentUpon>GetName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

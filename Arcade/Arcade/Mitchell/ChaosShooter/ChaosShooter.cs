@@ -48,6 +48,9 @@ namespace Arcade
         //sound player
         private SoundPlayer sndPlayer = null;
 
+        //Local score leader board
+        LocalScoreLeaderBoard scoreLeaderBoard = new LocalScoreLeaderBoard();
+
         public NoName()
         {
             InitializeComponent();
@@ -70,7 +73,9 @@ namespace Arcade
             DialogResult dr = MessageBox.Show("Final Score : " +Score , "No Health!", MessageBoxButtons.OK);
             if (dr == DialogResult.OK)
             {
-                //
+                scoreLeaderBoard.ReadFile("ChaosShooter");
+                scoreLeaderBoard.AddScoreAndName(Score);
+                scoreLeaderBoard.OutputFile("ChaosShooter");
             }
         }
 
@@ -92,9 +97,17 @@ namespace Arcade
             Walls.Add(ground);
 
             //setup fly enemies;
+            Flyenemies.TargetPos = player.ufo.position + player.ufo._size / 2;
+            Flyenemies.accelAmount = 80.0f;
+            Flyenemies.Health = 100;
+            Flyenemies.image = Properties.Resources.flight1;
             flyenemiesNumber = 10;
 
             //setup ground enemies
+            GroundEnemies.TargetPos = player.ufo.position + player.ufo._size / 2;
+            GroundEnemies.accelAmount = 100.0f;
+            GroundEnemies.Health = 50;
+            GroundEnemies.image = Properties.Resources.soldier;
             groundenemiesNumber = 10;
 
             //setup timer
@@ -178,10 +191,7 @@ namespace Arcade
                 for (int i = Flyenemies.flyEnemies.Count; i < flyenemiesNumber; i++)
                 {
                     Flyenemies.position = new Vector2((float)random.Next(0, 800), -60.0f);
-                    Flyenemies.TargetPos = player.ufo.position + player.ufo._size / 2;
-                    Flyenemies.accelAmount = 80.0f;
-                    Flyenemies.Health = 100;
-                    Flyenemies.image = Properties.Resources.flight1;
+
                     Flyenemies.CreateEnemy();
                 }
 
@@ -192,10 +202,6 @@ namespace Arcade
                     if(rand>=500) GroundEnemies.position = new Vector2(ground.Location.X+ground.Width-random.Next(1,200), ground.Location.Y);
                     else if(rand<500) GroundEnemies.position = new Vector2(ground.Location.X+random.Next(0,200), ground.Location.Y);
 
-                    GroundEnemies.TargetPos = player.ufo.position + player.ufo._size / 2;
-                    GroundEnemies.accelAmount = 100.0f;
-                    GroundEnemies.Health = 50;
-                    GroundEnemies.image = Properties.Resources.soldier;
                     GroundEnemies.CreateEnemy();
                 }
 
@@ -411,11 +417,10 @@ namespace Arcade
                 //vsync?
                 Invalidate();
 
-                //cooldown for cpu
-                System.Threading.Thread.Sleep(1);
                 FPS++;
 
                 //test
+                Debug.WriteLine(player.projectiles.Count);
             }
 
         }

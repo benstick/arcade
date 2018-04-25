@@ -22,7 +22,7 @@ namespace Arcade
 
         private void mainmenu_Load(object sender, EventArgs e)
         {
-            this.Opacity = 0.1;
+            this.Opacity = 1.0;//orginal = 0.1
             FadeinTimer.Start();
             DuckhuntDemo.Enabled = false;
             UserFocusCheck.Start();
