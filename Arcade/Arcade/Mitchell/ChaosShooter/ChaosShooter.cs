@@ -80,6 +80,7 @@ namespace Arcade
                 scoreLeaderBoard.ReadFile("ChaosShooter");
                 scoreLeaderBoard.AddScoreAndName(Score);
                 scoreLeaderBoard.OutputFile("ChaosShooter");
+                this.Close();
             }
         }
 
