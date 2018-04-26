@@ -18,6 +18,7 @@ namespace Arcade
         int gravity = 5;
         int Score = 0;
         List<PictureBox> Obstacle = new List<PictureBox>();
+        LocalScoreLeaderBoard scoreLeaderBoard = new LocalScoreLeaderBoard();
 
         //sound player
         private SoundPlayer sndPlayer = null;
@@ -119,7 +120,10 @@ namespace Arcade
         {
             timer1.Stop();
             DialogResult dr = MessageBox.Show("Your final score is:" + Score, "Play again?", MessageBoxButtons.YesNo);
-            if(dr==DialogResult.Yes)
+            scoreLeaderBoard.ReadFile("SpaceEvader");
+            scoreLeaderBoard.AddScoreAndName(Score);
+            scoreLeaderBoard.OutputFile("SpaceEvader");
+            if (dr==DialogResult.Yes)
             {
                 //reset game
                 reset();

@@ -9,10 +9,7 @@ using System.Windows.Forms;
 
 class LocalScoreLeaderBoard
 {
-    GetName getName = new GetName();//window form to get user name or title for score leaderboard
-
-    public List<string> LeaderBoard = new List<string>();
-    public List<int> tempScoreLeaderBoard = new List<int>();
+    public List<int> LeaderBoard = new List<int>();
     bool FirstTime = false;
 
     public void ReadFile(string fileName)
@@ -21,14 +18,16 @@ class LocalScoreLeaderBoard
         {
             LeaderBoard.Clear();
             string path = Application.StartupPath + "\\Data";
-            path += "\\"+fileName;
+            path += "\\" + fileName;
             StreamReader sr = new StreamReader(path);
 
             for (; ; )
             {
                 string temp = sr.ReadLine();
+                int temp1;
+                int.TryParse(temp, out temp1);
                 if (temp == null) break;
-                else LeaderBoard.Add(temp);
+                else LeaderBoard.Add(temp1);
             }
 
             sr.Close();
@@ -40,7 +39,6 @@ class LocalScoreLeaderBoard
             if (dr1 == DialogResult.OK)
             {
                 FirstTime = true;
-                LeaderBoard.Add("No." + "Name".PadLeft(6) + "Score".PadLeft(17));
                 createANewDataFolder();
                 OutputFile(fileName);
                 ReadFile(fileName);
@@ -49,14 +47,10 @@ class LocalScoreLeaderBoard
         }
     }
 
-    public void GetName()
-    {
-        getName.Show();
-    }
 
     public void AddScoreAndName(int Score)
     {
-        string temp = "N/A" + getName.UserName.PadLeft(9) + Score.ToString().PadLeft(19);
+        int temp = Score;
         LeaderBoard.Add(temp);
     }
 
@@ -65,7 +59,10 @@ class LocalScoreLeaderBoard
         try
         {
             string path = Application.StartupPath + "\\Data";
-            path +="\\"+fileName;
+            path += "\\" + fileName;
+
+            LeaderBoard.Sort();
+            LeaderBoard.Reverse();
 
             StreamWriter sw = new StreamWriter(path);
 
@@ -75,19 +72,21 @@ class LocalScoreLeaderBoard
             }
             sw.Close();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             MessageBox.Show(ex.ToString());
         }
         finally
         {
-            string tempLeaderBoard = null;
-            if (FirstTime == false)
+            string temp = null;
+            int i;
+            for (i = 0; i < LeaderBoard.Count; i++)
             {
-                for (int i = 0; i < LeaderBoard.Count; i++) tempLeaderBoard += LeaderBoard[i] + "\n";
-
-                DialogResult dr = MessageBox.Show(tempLeaderBoard, "Leaderboard" , MessageBoxButtons.OK);
+                temp += (i+1).ToString().PadRight(3) + LeaderBoard[i].ToString().PadLeft(10) +"\n";
+                if (i == 9) break;
             }
+
+            if(FirstTime==false) MessageBox.Show("No." + "Score".PadLeft(10) + "\n" + temp, "Leaderboard", MessageBoxButtons.OK);
 
         }
     }
@@ -95,7 +94,7 @@ class LocalScoreLeaderBoard
     void createANewDataFolder()
     {
         string path = Application.StartupPath + "\\Data";
-        
+
         Directory.CreateDirectory(path);
     }
 }

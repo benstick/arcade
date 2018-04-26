@@ -29,7 +29,9 @@ namespace Arcade
         private int currentRound = 1;
         private int score = 0;
         private int speed = 3; //default 3 for starting speed
-        private int numOfUfos = 2;
+        private int numOfUfos = 4;
+
+        LocalScoreLeaderBoard scoreLeaderBoard = new LocalScoreLeaderBoard();
 
         //Runs when game is loaded up
         private void Duckhunt_Load(object sender, EventArgs e)
@@ -37,9 +39,8 @@ namespace Arcade
             //Set cursor image
             try
             {
-                string Debugfile = Application.StartupPath;
-                string CursorPath = Debugfile.Remove(Debugfile.Length - 10, 10);
-                this.Cursor = new Cursor(CursorPath + "\\Resources\\DuckHuntReticle.cur");
+                string path  = Application.StartupPath;
+                this.Cursor = new Cursor(path +"\\DuckHuntReticle.cur");
             }
             catch (Exception ex)
             {
@@ -195,6 +196,10 @@ namespace Arcade
                     //run you lose function
                     movingObjects.Enabled = false;
                     //loseScreen.Visible = true;
+
+                    scoreLeaderBoard.ReadFile("SpaceHunt");
+                    scoreLeaderBoard.AddScoreAndName(score);
+                    scoreLeaderBoard.OutputFile("SpaceHunt");
                 }
 
                 count++;

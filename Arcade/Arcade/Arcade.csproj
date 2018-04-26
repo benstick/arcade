@@ -100,12 +100,6 @@
     <Compile Include="Mitchell\ChaosShooter\ChaosShooter.Designer.cs">
       <DependentUpon>ChaosShooter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mitchell\LocalScoreLeaderBoard\GetName.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Mitchell\LocalScoreLeaderBoard\GetName.Designer.cs">
-      <DependentUpon>GetName.cs</DependentUpon>
-    </Compile>
     <Compile Include="Mitchell\LocalScoreLeaderBoard\LocalScoreLeaderBoard.cs" />
     <Compile Include="Mitchell\ChaosShooter\PlayerControl.cs" />
     <Compile Include="Mitchell\ChaosShooter\Projectile.cs" />
@@ -123,9 +117,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mitchell\ChaosShooter\ChaosShooter.resx">
       <DependentUpon>ChaosShooter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mitchell\LocalScoreLeaderBoard\GetName.resx">
-      <DependentUpon>GetName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -256,6 +247,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Darren\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DuckHuntReticle.cur" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
