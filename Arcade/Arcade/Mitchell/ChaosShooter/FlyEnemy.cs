@@ -61,12 +61,12 @@ class FlyEnemy : Vector2dObject
 
     public void Fire(List<Projectile> pj, List<PictureBox> pjpb)
     {
-        if (isFiring && firerate >= 1.0f)
+        if (isFiring && firerate >= 2.0f)
         {
             pj.Add(new Projectile(
                 position,
                 TargetPos,
-                500.0f,
+                1000.0f,
                 Arcade.Properties.Resources.projectile1,
                 1)
                 );

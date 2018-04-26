@@ -37,6 +37,10 @@ namespace Arcade
         FlyEnemy Flyenemies = new FlyEnemy();
         uint flyenemiesNumber;
 
+        //add missile
+        FlyEnemy Missiles = new FlyEnemy();
+        uint MissileNumber;
+
         //add groundEnemy
         GroundEnemy GroundEnemies = new GroundEnemy();
         uint groundenemiesNumber;
@@ -87,7 +91,7 @@ namespace Arcade
             player.ufo.facingDegrees = 270.0f;
             player.ufo._size.X = ufo.Size.Width;
             player.ufo._size.Y = ufo.Size.Height;
-            player.ufo.accelAmount = 200.0f;
+            player.ufo.accelAmount = 300.0f;
             player.ufo.Health = 100;
 
             //setup walls
@@ -96,9 +100,16 @@ namespace Arcade
             Walls.Add(WallTop);
             Walls.Add(ground);
 
+            //setup missiles
+            Missiles.TargetPos = player.ufo.position + player.ufo._size / 2;
+            Missiles.accelAmount = 100.0f;
+            Missiles.Health = 50;
+            Missiles.image = Properties.Resources.missile1;
+            MissileNumber = 5;
+
             //setup fly enemies;
             Flyenemies.TargetPos = player.ufo.position + player.ufo._size / 2;
-            Flyenemies.accelAmount = 80.0f;
+            Flyenemies.accelAmount = 50.0f;
             Flyenemies.Health = 100;
             Flyenemies.image = Properties.Resources.flight1;
             flyenemiesNumber = 10;
@@ -187,10 +198,22 @@ namespace Arcade
             {
                 //tell player how to play in messagebox then start if player clicks "OK"
                 if(Intro==true) HowToPlay(GameloopTimer);
+
+                //create missile
+                for (int i = Missiles.flyEnemies.Count; i < MissileNumber; i++)
+                {
+                    int rand = random.Next(1, 1000);
+                    Missiles.position = new Vector2((float)random.Next(0,800),-150.0f);
+
+                    Missiles.CreateEnemy();
+                }
+
                 //create fly enemy
                 for (int i = Flyenemies.flyEnemies.Count; i < flyenemiesNumber; i++)
                 {
-                    Flyenemies.position = new Vector2((float)random.Next(0, 800), -60.0f);
+                    int rand = random.Next(1, 1000);
+                    if(rand>=500) Flyenemies.position = new Vector2((float)random.Next(-200, 0), (float)random.Next(0,500));
+                    if (rand < 500) Flyenemies.position = new Vector2((float)random.Next(800, 1000), (float)random.Next(0, 500));
 
                     Flyenemies.CreateEnemy();
                 }
@@ -266,7 +289,7 @@ namespace Arcade
                     }
                 }
                 //(fly enemy, player)
-                for (int i = 0; i < Flyenemies.flyEnemiesPictureBoxes.Count; i++)
+                for (int i = 0; i < Flyenemies.flyEnemies.Count; i++)
                 {
                     if (Flyenemies.flyEnemiesPictureBoxes[i].Bounds.IntersectsWith(ufo.Bounds))
                     {
@@ -324,7 +347,31 @@ namespace Arcade
                         }
                     }
                 }
+                //(player projectiles, enemy missile)
+                for (int i = 0; i < player.projectilepictureBoxes.Count; i++)
+                {
+                    for (int j = 0; j < Missiles.flyEnemies.Count; j++)
+                    {
+                        if (player.projectilepictureBoxes[i].Bounds.IntersectsWith(Missiles.flyEnemiesPictureBoxes[j].Bounds))
+                        {
+                            Missiles.flyEnemies[j].Health -= player.projectiles[i].Damage;
+                            ScoreLabel.Text = "Score : " + (Score += 50).ToString();
 
+                            if (Missiles.flyEnemies[j].Health <= 0)
+                            {
+                                ScoreLabel.Text = "Score : " + (Score += 100).ToString();
+                                Missiles.flyEnemiesPictureBoxes[j].Dispose();
+                                Missiles.flyEnemiesPictureBoxes.RemoveAt(j);
+                                Missiles.flyEnemies.RemoveAt(j);
+                            }
+                            player.projectilepictureBoxes[i].Dispose();
+                            player.projectilepictureBoxes.RemoveAt(i);
+                            player.projectiles.RemoveAt(i);
+                            --i;
+                            break;
+                        }
+                    }
+                }
                 //(ground enemy, ground)
                 for (int i = 0; i < GroundEnemies.groundEnemiesPictureBoxes.Count; i++)
                 {
@@ -334,7 +381,17 @@ namespace Arcade
 
                     }
                 }
-
+                //(enemy missile, player)
+                for (int i = 0; i < Missiles.flyEnemiesPictureBoxes.Count; i++)
+                {
+                    if (Missiles.flyEnemiesPictureBoxes[i].Bounds.IntersectsWith(ufo.Bounds))
+                    {
+                        player.ufo.Health -= 20;
+                        Missiles.flyEnemiesPictureBoxes[i].Dispose();
+                        Missiles.flyEnemiesPictureBoxes.RemoveAt(i);
+                        Missiles.flyEnemies.RemoveAt(i);
+                    }
+                }
 
                 //update game objects
                 //player
@@ -354,7 +411,7 @@ namespace Arcade
                         Flyenemies.flyEnemies[i].isFiring = true;
                         Flyenemies.flyEnemies[i].Fire(Enemyprojectile.projectiles, Enemyprojectile.projectilepictureBoxes);
                     }
-                    Flyenemies.flyEnemies[i].firerate += dt;
+                    Flyenemies.flyEnemies[i].firerate += dt*random.Next(0,5);
                 }
                 //ground enemies
                 for (int i = 0; i < GroundEnemies.groundEnemies.Count; i++)
@@ -366,7 +423,13 @@ namespace Arcade
                         GroundEnemies.groundEnemies[i].isFiring = true;
                         GroundEnemies.groundEnemies[i].Fire(Enemyprojectile.projectiles, Enemyprojectile.projectilepictureBoxes);
                     }
-                    GroundEnemies.groundEnemies[i].firerate += dt;
+                    GroundEnemies.groundEnemies[i].firerate += dt * random.Next(0, 5);
+                }
+                //enemy missiles
+                for (int i = 0; i < Missiles.flyEnemies.Count; i++)
+                {
+                    Missiles.flyEnemies[i].TargetPos = player.ufo.position + player.ufo._size / 2;
+                    Missiles.flyEnemies[i].Update(dt);
                 }
 
                 //all enemies projectile
@@ -402,6 +465,14 @@ namespace Arcade
                     GroundEnemies.groundEnemies[i].image = Properties.Resources.soldier;
                     GroundEnemies.groundEnemies[i].Draw(GroundEnemies.groundEnemiesPictureBoxes[i]);
                     this.Controls.Add(GroundEnemies.groundEnemiesPictureBoxes[i]);
+                }
+
+                //enemy missile
+                for (int i = 0; i < Missiles.flyEnemiesPictureBoxes.Count; i++)
+                {
+                    Missiles.flyEnemies[i].image = Properties.Resources.missile1;
+                    Missiles.flyEnemies[i].Draw(Missiles.flyEnemiesPictureBoxes[i]);
+                    this.Controls.Add(Missiles.flyEnemiesPictureBoxes[i]);
                 }
 
                 //all enemies projectiles

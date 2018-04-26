@@ -251,5 +251,11 @@
   <ItemGroup>
     <None Include="Resources\DuckHuntReticle.cur" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\missile1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projectile3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
