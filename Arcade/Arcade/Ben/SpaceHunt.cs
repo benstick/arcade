@@ -195,7 +195,7 @@ namespace Arcade
 
                     //run you lose function
                     movingObjects.Enabled = false;
-                    //loseScreen.Visible = true;
+                    loseScreen.Visible = true;
 
                     scoreLeaderBoard.ReadFile("SpaceHunt");
                     scoreLeaderBoard.AddScoreAndName(score);

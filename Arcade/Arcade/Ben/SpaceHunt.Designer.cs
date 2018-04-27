@@ -36,6 +36,7 @@
             this.welcomeLogo = new System.Windows.Forms.PictureBox();
             this.numOfRoundsLabel = new System.Windows.Forms.Label();
             this.scoreLabel = new System.Windows.Forms.Label();
+            this.loseScreen = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.playButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.welcomeLogo)).BeginInit();
             this.SuspendLayout();
@@ -105,6 +106,18 @@
             this.scoreLabel.Text = "Score: 0";
             this.scoreLabel.Visible = false;
             // 
+            // loseScreen
+            // 
+            this.loseScreen.BackColor = System.Drawing.Color.Transparent;
+            this.loseScreen.Font = new System.Drawing.Font("Magneto", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loseScreen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(61)))), ((int)(((byte)(142)))));
+            this.loseScreen.Location = new System.Drawing.Point(458, 290);
+            this.loseScreen.Name = "loseScreen";
+            this.loseScreen.Size = new System.Drawing.Size(650, 141);
+            this.loseScreen.TabIndex = 5;
+            this.loseScreen.Text = "You Lose!";
+            this.loseScreen.Visible = false;
+            // 
             // Duckhunt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -113,6 +126,7 @@
             this.BackgroundImage = global::Arcade.Properties.Resources.grid;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1280, 700);
+            this.Controls.Add(this.loseScreen);
             this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.numOfRoundsLabel);
             this.Controls.Add(this.playButton);
@@ -139,5 +153,6 @@
         private System.Windows.Forms.PictureBox playButton;
         private System.Windows.Forms.Label numOfRoundsLabel;
         private System.Windows.Forms.Label scoreLabel;
+        private System.Windows.Forms.Label loseScreen;
     }
 }
